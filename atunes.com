@@ -1,0 +1,562 @@
+# atunescf
+Atunes CF Official Web Site
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atunes CF - Sitio Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CONFIGURACIÓN DE COLORES Y ESTILOS --- */
+        :root {
+            --primary: #001f3f;    /* Azul Oscuro Navy */
+            --primary-light: #003366; 
+            --gold: #d4af37;       /* Dorado Metálico */
+            --gold-gradient: linear-gradient(45deg, #d4af37, #f3e5ab, #d4af37);
+            --white: #ffffff;
+            --light-gray: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-gray);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVBAR --- */
+        nav {
+            background-color: var(--primary);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn-shop {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px; /* Bordes menos redondos para estilo serio */
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-shop:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6);
+        }
+
+        /* --- HERO HEADER --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.95)), 
+                        url('https://images.unsplash.com/photo-1510051640316-cee39563ddab?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            /* Corte en flecha hacia abajo */
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            padding-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 0px var(--primary);
+        }
+
+        .hero h2 {
+            color: var(--gold);
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 5px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero-btn {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--gold);
+            color: var(--primary);
+        }
+
+        /* --- PLANTILLA (SQUAD) --- */
+        .section-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        .position-group {
+            margin-bottom: 4rem;
+        }
+
+        .position-title {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* DISEÑO DE CARTA DE JUGADOR */
+        .player-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--gold);
+        }
+
+        .player-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .player-img {
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            background-image: linear-gradient(to top, var(--primary) 0%, transparent 50%);
+        }
+
+        /* Silueta genérica hecha con CSS/FontAwesome para placeholder */
+        .player-img i {
+            font-size: 140px;
+            color: #ccc;
+            opacity: 0.5;
+            transform: translateY(20px);
+        }
+
+        .card-info {
+            padding: 1rem;
+            position: relative;
+        }
+
+        .player-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .player-number {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+            font-style: italic;
+            z-index: 10;
+        }
+        
+        .player-pos-label {
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        /* --- CALENDARIO (TABLA) --- */
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .calendar-table th {
+            background-color: var(--primary);
+            color: var(--gold);
+            padding: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .calendar-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .calendar-table tr:hover {
+            background-color: #fff9e6; /* Dorado muy claro */
+        }
+        
+        .match-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 5px solid var(--gold);
+        }
+        
+        .footer-cols {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul li { margin-bottom: 10px; opacity: 0.8; }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero h2 { font-size: 1.2rem; }
+            .nav-links { display: none; } /* Menú móvil simplificado */
+            .logo { font-size: 1.4rem; }
+            .player-card { margin-bottom: 1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-fish-fins"></i> ATUNES CF
+        </div>
+        <ul class="nav-links">
+            <li><a href="#plantilla">Plantilla</a></li>
+            <li><a href="#calendario">Calendario</a></li>
+            <li><a href="#tienda">Tienda</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#tienda" class="btn-shop">Tienda Oficial</a>
+    </nav>
+
+    <section class="hero">
+        <h1>ATUNES CF</h1>
+        <h2>Més Que Un Equip</h2>
+        <a href="#calendario" class="hero-btn">Ver Próximo Partido</a>
+    </section>
+
+    <section id="plantilla" class="section-container">
+        <h2 class="section-title">Primera Plantilla 25/26</h2>
+
+        <div class="position-group">
+            <h3 class="position-title">Porteros</h3>
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">1</span>
+                        <div class="player-name">Josep Domínguez</div>
+                        <div class="player-pos-label">Portero</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-group">
+            <h3 class="position-title">Defensas</h3>
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">10</span>
+                        <div class="player-name">Hardy</div>
+                        <div class="player-pos-label">Lateral Derecho</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">14</span>
+                        <div class="player-name">Guaje</div>
+                        <div class="player-pos-label">Defensa Central</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">20</span>
+                        <div class="player-name">Mafe</div>
+                        <div class="player-pos-label">Lateral Izquierdo</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">69</span>
+                        <div class="player-name">Bobymordiscos</div>
+                        <div class="player-pos-label">Defensa Central</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-group">
+            <h3 class="position-title">Centrocampistas</h3>
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">7</span>
+                        <div class="player-name">Carles Domínguez</div>
+                        <div class="player-pos-label">Pivote</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">15</span>
+                        <div class="player-name">Pedrito</div>
+                        <div class="player-pos-label">Mediapunta</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">30</span>
+                        <div class="player-name">Juancho</div>
+                        <div class="player-pos-label">Mediocentro</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">73</span>
+                        <div class="player-name">Saborano</div>
+                        <div class="player-pos-label">Mediocentro</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-group">
+            <h3 class="position-title">Delanteros</h3>
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">5</span>
+                        <div class="player-name">Eric</div>
+                        <div class="player-pos-label">Extremo Izquierdo</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">8</span>
+                        <div class="player-name">Darío</div>
+                        <div class="player-pos-label">Delantero Centro</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">16</span>
+                        <div class="player-name">Juan</div>
+                        <div class="player-pos-label">Extremo Derecho</div>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-info">
+                        <span class="player-number">22</span>
+                        <div class="player-name">Pelli</div>
+                        <div class="player-pos-label">Delantero Centro</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calendario" style="background-color: #fff; padding: 4rem 0;">
+        <div class="section-container">
+            <h2 class="section-title">Calendario 2025/26</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Local</th>
+                        <th>Visitante</th>
+                        <th>Estadio</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15 SEP - 18:00</td>
+                        <td><strong>ATUNES CF</strong></td>
+                        <td>Rayo V.</td>
+                        <td>El Arrecife</td>
+                        <td><span class="match-badge">PRÓXIMO</span></td>
+                    </tr>
+                    <tr>
+                        <td>22 SEP - 21:00</td>
+                        <td>Girona FC</td>
+                        <td><strong>ATUNES CF</strong></td>
+                        <td>Montilivi</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>29 SEP - 16:15</td>
+                        <td><strong>ATUNES CF</strong></td>
+                        <td>Betis</td>
+                        <td>El Arrecife</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>06 OCT - 21:00</td>
+                        <td>Valencia CF</td>
+                        <td><strong>ATUNES CF</strong></td>
+                        <td>Mestalla</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>Atunes CF</h4>
+                <ul>
+                    <li>Sobre Nosotros</li>
+                    <li>Historia del Club</li>
+                    <li>Estadio 'La Pecera'</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Tienda</h4>
+                <ul>
+                    <li>Primera Equipación</li>
+                    <li>Segunda Equipación</li>
+                    <li>Bufandas y Accesorios</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> atunescf@atunescf.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Carrer de la Galca, 2, 46722 Beniarjó Valencia</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+            <i class="fa-solid fa-fish-fins"></i> ATUNES CF
+        </div>
+        <p>© 2026 Atunes CF. Todos los derechos reservados. Més que un equip.</p>
+    </footer>
+
+</body>
+</html>
