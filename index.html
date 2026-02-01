@@ -37,7 +37,7 @@
         /* --- NAVBAR --- */
         nav {
             background-color: var(--primary);
-            padding: 1.2rem 5%;
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,13 +50,20 @@
 
         .logo {
             color: var(--gold);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+        }
+
+        /* Ajuste del logo en el menú */
+        .logo img {
+            height: 50px; /* Tamaño del escudo en la barra */
+            width: auto;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
         }
 
         .nav-links {
@@ -79,7 +86,7 @@
             background: var(--gold-gradient);
             color: var(--primary);
             padding: 0.6rem 1.5rem;
-            border-radius: 4px; /* Bordes menos redondos para estilo serio */
+            border-radius: 4px;
             font-weight: 800;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
@@ -92,7 +99,7 @@
 
         /* --- HERO HEADER --- */
         .hero {
-            height: 85vh;
+            height: 90vh; /* Un poco más alto para que quepa el escudo */
             background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.95)), 
                         url('https://images.unsplash.com/photo-1510051640316-cee39563ddab?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -103,23 +110,38 @@
             align-items: center;
             text-align: center;
             color: var(--white);
-            /* Corte en flecha hacia abajo */
             clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
             padding-bottom: 50px;
         }
 
+        /* Estilo para el Escudo Grande en la portada */
+        .hero-logo-img {
+            width: 180px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
         .hero h1 {
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: -2px;
             text-shadow: 2px 2px 0px var(--primary);
+            line-height: 1;
         }
 
         .hero h2 {
             color: var(--gold);
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 400;
             letter-spacing: 5px;
             margin-bottom: 2rem;
@@ -203,21 +225,29 @@
         }
 
         .player-img {
-            height: 200px;
+            height: 220px; /* Un poco más de altura para las fotos */
             background-color: #e0e0e0;
             display: flex;
-            align-items: flex-end;
+            align-items: flex-end; /* Alinea abajo si la foto es transparente */
             justify-content: center;
             overflow: hidden;
-            background-image: linear-gradient(to top, var(--primary) 0%, transparent 50%);
+            background-image: radial-gradient(circle at center, #eee, #ccc);
         }
 
-        /* Silueta genérica hecha con CSS/FontAwesome para placeholder */
+        /* Ajuste de las FOTOS de jugadores */
+        .player-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recorta la foto para llenar el hueco sin deformar */
+            object-position: top center; /* Centra en la cara/cabeza */
+        }
+        
+        /* Ajuste para placeholder (si falta foto) */
         .player-img i {
-            font-size: 140px;
-            color: #ccc;
+            font-size: 120px;
+            color: #999;
             opacity: 0.5;
-            transform: translateY(20px);
+            align-self: center;
         }
 
         .card-info {
@@ -226,7 +256,7 @@
         }
 
         .player-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
@@ -240,7 +270,7 @@
             font-size: 3.5rem;
             font-weight: 900;
             color: var(--white);
-            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+            text-shadow: 0 0 10px rgba(0,0,0,0.6);
             font-style: italic;
             z-index: 10;
         }
@@ -273,10 +303,6 @@
             color: #555;
             font-weight: 600;
             text-align: center;
-        }
-
-        .calendar-table tr:hover {
-            background-color: #fff9e6; /* Dorado muy claro */
         }
         
         .match-badge {
@@ -316,8 +342,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             .hero h2 { font-size: 1.2rem; }
-            .nav-links { display: none; } /* Menú móvil simplificado */
-            .logo { font-size: 1.4rem; }
+            .nav-links { display: none; }
             .player-card { margin-bottom: 1rem; }
         }
 
@@ -327,7 +352,8 @@
 
     <nav>
         <div class="logo">
-            <i class="fa-solid fa-fish-fins"></i> ATUNES CF
+            <img src="img/ESCUDO.png" alt="Escudo Atunes CF"> 
+            ATUNES CF
         </div>
         <ul class="nav-links">
             <li><a href="#plantilla">Plantilla</a></li>
@@ -339,6 +365,8 @@
     </nav>
 
     <section class="hero">
+        <img src="img/ESCUDO.png" alt="Escudo Grande" class="hero-logo-img">
+        
         <h1>ATUNES CF</h1>
         <h2>Més Que Un Equip</h2>
         <a href="#calendario" class="hero-btn">Ver Próximo Partido</a>
@@ -351,7 +379,9 @@
             <h3 class="position-title">Porteros</h3>
             <div class="players-grid">
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/JOSEP.png" alt="Josep Domínguez">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">1</span>
                         <div class="player-name">Josep Domínguez</div>
@@ -365,7 +395,9 @@
             <h3 class="position-title">Defensas</h3>
             <div class="players-grid">
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/HARDY.png" alt="Hardy">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">10</span>
                         <div class="player-name">Hardy</div>
@@ -373,7 +405,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/GERARD.png" alt="Guaje">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">14</span>
                         <div class="player-name">Guaje</div>
@@ -381,7 +415,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/MAFE.png" alt="Mafe">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">20</span>
                         <div class="player-name">Mafe</div>
@@ -389,7 +425,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/ABEL.png" alt="Bobymordiscos">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">69</span>
                         <div class="player-name">Bobymordiscos</div>
@@ -403,7 +441,9 @@
             <h3 class="position-title">Centrocampistas</h3>
             <div class="players-grid">
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/CARLES.png" alt="Carles Domínguez">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">7</span>
                         <div class="player-name">Carles Domínguez</div>
@@ -411,7 +451,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/PEDRO.jpg" alt="Pedrito">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">15</span>
                         <div class="player-name">Pedrito</div>
@@ -419,7 +461,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/JUANCHO.png" alt="Juancho">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">30</span>
                         <div class="player-name">Juancho</div>
@@ -427,7 +471,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/CARLOS.png" alt="Saborano">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">73</span>
                         <div class="player-name">Saborano</div>
@@ -441,7 +487,9 @@
             <h3 class="position-title">Delanteros</h3>
             <div class="players-grid">
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/ERIC.png" alt="Eric">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">5</span>
                         <div class="player-name">Eric</div>
@@ -449,7 +497,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/DARÍO.png" alt="Darío">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">8</span>
                         <div class="player-name">Darío</div>
@@ -457,7 +507,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/JUAN.png" alt="Juan">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">16</span>
                         <div class="player-name">Juan</div>
@@ -465,7 +517,9 @@
                     </div>
                 </div>
                 <div class="player-card">
-                    <div class="player-img"><i class="fa-solid fa-user"></i></div>
+                    <div class="player-img">
+                        <img src="img/PELLI.png" alt="Pelli">
+                    </div>
                     <div class="card-info">
                         <span class="player-number">22</span>
                         <div class="player-name">Pelli</div>
@@ -504,20 +558,6 @@
                         <td>Montilivi</td>
                         <td>-</td>
                     </tr>
-                    <tr>
-                        <td>29 SEP - 16:15</td>
-                        <td><strong>ATUNES CF</strong></td>
-                        <td>Betis</td>
-                        <td>El Arrecife</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>06 OCT - 21:00</td>
-                        <td>Valencia CF</td>
-                        <td><strong>ATUNES CF</strong></td>
-                        <td>Mestalla</td>
-                        <td>-</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -550,10 +590,11 @@
             </div>
         </div>
         
-        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
-            <i class="fa-solid fa-fish-fins"></i> ATUNES CF
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem; flex-direction: column;">
+            <img src="img/ESCUDO.png" alt="Escudo Atunes CF" style="height: 80px; margin-bottom: 10px;">
+            ATUNES CF
         </div>
-        <p>© 2026 Atunes CF. Todos los derechos reservados. Més que un equip.</p>
+        <p>© 2026 Atunes CF. Todos los derechos reservados.</p>
     </footer>
 
 </body>
