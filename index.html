@@ -16,6 +16,11 @@
             --gold-gradient: linear-gradient(45deg, #d4af37, #f3e5ab, #d4af37);
             --white: #ffffff;
             --light-gray: #f4f4f4;
+            --nav-height: 80px;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -37,7 +42,8 @@
         /* --- NAVBAR --- */
         nav {
             background-color: var(--primary);
-            padding: 0.8rem 5%;
+            padding: 0 5%;
+            height: var(--nav-height);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,9 +65,8 @@
             gap: 15px;
         }
 
-        /* Ajuste del logo en el menú */
         .logo img {
-            height: 50px; /* Tamaño del escudo en la barra */
+            height: 50px;
             width: auto;
             filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
         }
@@ -69,6 +74,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -97,9 +103,17 @@
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6);
         }
 
+        /* Menú Hamburguesa (Oculto en PC) */
+        .menu-toggle {
+            display: none;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
         /* --- HERO HEADER --- */
         .hero {
-            height: 90vh; /* Un poco más alto para que quepa el escudo */
+            height: 90vh;
             background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.95)), 
                         url('https://images.unsplash.com/photo-1510051640316-cee39563ddab?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -114,7 +128,6 @@
             padding-bottom: 50px;
         }
 
-        /* Estilo para el Escudo Grande en la portada */
         .hero-logo-img {
             width: 180px;
             height: auto;
@@ -162,13 +175,18 @@
             color: var(--primary);
         }
 
-        /* --- PLANTILLA (SQUAD) --- */
-       .section-container {
-          max-width: 1200px;
-    margin: 4rem auto;
-    padding: 20px; /* Le damos un poco de margen interno general */
-    overflow-x: visible; 
-}
+        /* --- SECCIONES GENERALES --- */
+        /* Ajuste para que el menú sticky no tape el título al hacer click */
+        section {
+            scroll-margin-top: var(--nav-height);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 20px;
+        }
+
         .section-title {
             color: var(--primary);
             font-size: 2.5rem;
@@ -225,24 +243,23 @@
         }
 
         .player-img {
-            height: 220px; /* Un poco más de altura para las fotos */
+            height: 220px;
             background-color: #e0e0e0;
             display: flex;
-            align-items: flex-end; /* Alinea abajo si la foto es transparente */
+            align-items: flex-end;
             justify-content: center;
             overflow: hidden;
             background-image: radial-gradient(circle at center, #eee, #ccc);
         }
 
-        /* Ajuste de las FOTOS de jugadores */
         .player-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Recorta la foto para llenar el hueco sin deformar */
-            object-position: top center; /* Centra en la cara/cabeza */
+            object-fit: cover;
+            object-position: top center;
         }
         
-        /* Ajuste para placeholder (si falta foto) */
+        /* Placeholder por si falla la imagen */
         .player-img i {
             font-size: 120px;
             color: #999;
@@ -282,8 +299,13 @@
         }
 
         /* --- CALENDARIO (TABLA) --- */
+        .table-responsive {
+            overflow-x: auto; /* Permite scroll lateral en móvil */
+        }
+
         .calendar-table {
             width: 100%;
+            min-width: 600px; /* Asegura ancho mínimo */
             border-collapse: collapse;
             background: #fff;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -311,6 +333,7 @@
             padding: 5px 10px;
             border-radius: 4px;
             font-size: 0.8rem;
+            white-space: nowrap;
         }
 
         /* --- FOOTER --- */
@@ -342,7 +365,31 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             .hero h2 { font-size: 1.2rem; }
-            .nav-links { display: none; }
+            
+            .menu-toggle { display: block; }
+            
+            .nav-links {
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+                border-bottom: 2px solid var(--gold);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            /* Ocultar botón tienda en móvil dentro de la lista si se desea, o dejarlo */
+            .btn-shop { margin-top: 1rem; }
+            
             .player-card { margin-bottom: 1rem; }
         }
 
@@ -355,17 +402,22 @@
             <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF"> 
             ATUNES CF
         </div>
-        <ul class="nav-links">
-            <li><a href="#plantilla">Plantilla</a></li>
-            <li><a href="#calendario">Calendario</a></li>
-            <li><a href="#tienda">Tienda</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#plantilla" onclick="toggleMenu()">Plantilla</a></li>
+            <li><a href="#calendario" onclick="toggleMenu()">Calendario</a></li>
+            <li><a href="#tienda" onclick="toggleMenu()">Tienda</a></li>
+            <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+            <a href="#tienda" class="btn-shop" onclick="toggleMenu()">Tienda Oficial</a>
         </ul>
-        <a href="#tienda" class="btn-shop">Tienda Oficial</a>
     </nav>
 
     <section class="hero">
-        <img src="img/img/LOGO ATUNES.png" alt="Escudo Grande" class="hero-logo-img">
+        <img src="img/LOGO ATUNES.png" alt="Escudo Grande" class="hero-logo-img">
         
         <h1>ATUNES CF</h1>
         <h2>Més Que Un Equip</h2>
@@ -442,7 +494,6 @@
             <div class="players-grid">
                 <div class="player-card">
                     <div class="player-img">
-                        <img src
                         <img src="img/CARLESD.jpg" alt="Domínguez">
                     </div>
                     <div class="card-info">
@@ -530,8 +581,11 @@
             </div>
         </div>
     </section>
-        <div class="section-container">
-            <h2 class="section-title">Calendario</h2>
+
+    <section id="calendario" class="section-container">
+        <h2 class="section-title">Calendario</h2>
+        
+        <div class="table-responsive">
             <table class="calendar-table">
                 <thead>
                     <tr>
@@ -594,7 +648,7 @@
             </div>
             <div class="footer-col">
                 <h4>Tienda</h4>
-                <ul>
+                <ul id="tienda">
                     <li>Próximamente</li>
                 </ul>
             </div>
@@ -607,11 +661,18 @@
         </div>
         
         <div class="logo" style="justify-content: center; margin-bottom: 1rem; flex-direction: column;">
-            <img src="img/img/LOGO ATUNES.png" alt="Escudo Atunes CF" style="height: 80px; margin-bottom: 10px;">
+            <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF" style="height: 80px; margin-bottom: 10px;">
             ATUNES CF
         </div>
         <p>© 2026 Atunes CF. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
