@@ -176,7 +176,6 @@
         }
 
         /* --- SECCIONES GENERALES --- */
-        /* Ajuste para que el menú sticky no tape el título al hacer click */
         section {
             scroll-margin-top: var(--nav-height);
         }
@@ -259,7 +258,6 @@
             object-position: top center;
         }
         
-        /* Placeholder por si falla la imagen */
         .player-img i {
             font-size: 120px;
             color: #999;
@@ -300,12 +298,12 @@
 
         /* --- CALENDARIO (TABLA) --- */
         .table-responsive {
-            overflow-x: auto; /* Permite scroll lateral en móvil */
+            overflow-x: auto;
         }
 
         .calendar-table {
             width: 100%;
-            min-width: 600px; /* Asegura ancho mínimo */
+            min-width: 600px;
             border-collapse: collapse;
             background: #fff;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -360,6 +358,7 @@
         }
 
         .footer-col ul li { margin-bottom: 10px; opacity: 0.8; }
+        .footer-col ul li a:hover { color: var(--gold); text-decoration: underline; }
         
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -387,9 +386,7 @@
                 transform: translateY(0);
             }
             
-            /* Ocultar botón tienda en móvil dentro de la lista si se desea, o dejarlo */
             .btn-shop { margin-top: 1rem; }
-            
             .player-card { margin-bottom: 1rem; }
         }
 
@@ -410,9 +407,9 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#plantilla" onclick="toggleMenu()">Plantilla</a></li>
             <li><a href="#calendario" onclick="toggleMenu()">Calendario</a></li>
-            <li><a href="#tienda" onclick="toggleMenu()">Tienda</a></li>
+            <li><a href="https://zentralsports.com/producto/atunes-cf/" target="_blank">Tienda</a></li>
             <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
-            <a href="#tienda" class="btn-shop" onclick="toggleMenu()">Tienda Oficial</a>
+            <a href="https://zentralsports.com/producto/atunes-cf/" class="btn-shop" target="_blank">Tienda Oficial</a>
         </ul>
     </nav>
 
@@ -648,8 +645,8 @@
             </div>
             <div class="footer-col">
                 <h4>Tienda</h4>
-                <ul id="tienda">
-                    <li>Próximamente</li>
+                <ul>
+                    <li><a href="https://zentralsports.com/producto/atunes-cf/" target="_blank">Comprar Equipación Oficial</a></li>
                 </ul>
             </div>
             <div class="footer-col">
