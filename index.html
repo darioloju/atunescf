@@ -73,14 +73,14 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
         .nav-links a {
             color: var(--white);
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
         }
 
@@ -103,7 +103,7 @@
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6);
         }
 
-        /* Menú Hamburguesa (Oculto en PC) */
+        /* Menú Hamburguesa */
         .menu-toggle {
             display: none;
             color: var(--gold);
@@ -205,6 +205,66 @@
             margin: 10px auto 0;
         }
 
+        /* --- ESTILOS DE HISTORIA (LA SAGA) --- */
+        .history-box {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--gold);
+        }
+        
+        .history-intro {
+            font-style: italic;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .history-chapter {
+            margin-bottom: 2.5rem;
+        }
+
+        .history-chapter h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .history-chapter h3 span {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 600;
+            text-transform: none;
+            margin-left: 10px;
+        }
+
+        .history-chapter p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #444;
+            text-align: justify;
+        }
+
+        .history-chapter ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* --- ESTILOS PLANTILLA --- */
         .position-group {
             margin-bottom: 4rem;
         }
@@ -225,7 +285,6 @@
             gap: 20px;
         }
 
-        /* DISEÑO DE CARTA DE JUGADOR */
         .player-card {
             background: #fff;
             border-radius: 8px;
@@ -256,13 +315,6 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-        }
-        
-        .player-img i {
-            font-size: 120px;
-            color: #999;
-            opacity: 0.5;
-            align-self: center;
         }
 
         .card-info {
@@ -303,7 +355,7 @@
 
         .calendar-table {
             width: 100%;
-            min-width: 600px;
+            min-width: 800px;
             border-collapse: collapse;
             background: #fff;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -315,6 +367,7 @@
             padding: 1rem;
             text-transform: uppercase;
             font-size: 0.9rem;
+            text-align: center;
         }
 
         .calendar-table td {
@@ -332,6 +385,12 @@
             border-radius: 4px;
             font-size: 0.8rem;
             white-space: nowrap;
+        }
+
+        /* Estilo para el próximo partido */
+        .next-match-row {
+            background-color: #fffbeb; /* Fondo dorado muy suave */
+            border: 2px solid var(--gold);
         }
 
         /* --- FOOTER --- */
@@ -388,6 +447,7 @@
             
             .btn-shop { margin-top: 1rem; }
             .player-card { margin-bottom: 1rem; }
+            .history-box { padding: 1.5rem; }
         }
 
     </style>
@@ -405,9 +465,9 @@
         </div>
 
         <ul class="nav-links" id="navLinks">
+            <li><a href="#historia" onclick="toggleMenu()">Historia del Club</a></li>
             <li><a href="#plantilla" onclick="toggleMenu()">Plantilla</a></li>
             <li><a href="#calendario" onclick="toggleMenu()">Calendario</a></li>
-            <li><a href="https://zentralsports.com/producto/atunes-cf/" target="_blank">Tienda</a></li>
             <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
             <a href="https://zentralsports.com/producto/atunes-cf/" class="btn-shop" target="_blank">Tienda Oficial</a>
         </ul>
@@ -419,6 +479,38 @@
         <h1>ATUNES CF</h1>
         <h2>Més Que Un Equip</h2>
         <a href="#calendario" class="hero-btn">Ver Próximo Partido</a>
+    </section>
+
+    <section id="historia" class="section-container">
+        <h2 class="section-title">Historia del Club</h2>
+        
+        <div class="history-box">
+            <p class="history-intro">
+                "La Saga de los Atunes: Crónicas de un Legado. Esta es la historia de cómo una idea se transformó en imperio, de cómo el fracaso sembró las semillas de la gloria y de cómo un grupo de guerreros, bajo la bandera pirata, conquistó la eternidad en los campos de Gandía."
+            </p>
+
+            <div class="history-chapter">
+                <h3>I. INICIOS: El Nacimiento <span>(Febrero 2022 – Diciembre 2022)</span></h3>
+                <p>En los albores de febrero de 2022, <span class="highlight">Darío Lozano, el Arquitecto Primero</span>, tuvo una visión. En un mundo dominado por lo digital, forjó Atunes como una escuadra de eSports, un proyecto nacido de la ambición y los sueños eléctricos.</p>
+                <p>Sin embargo, los dioses del destino son caprichosos. Aquella primera encarnación, frágil e inmaterial, no logró soportar el peso de las expectativas. Como una estrella fugaz que se consume antes de tocar el suelo, el proyecto se disolvió a los pocos meses, sumiéndose en el silencio y la oscuridad. Pero lo que muchos creyeron un final, no era más que el sueño previo al despertar. La esencia de Atunes no había muerto; solo estaba hibernando, aguardando la carne y la sangre para renacer.</p>
+            </div>
+
+            <div class="history-chapter">
+                <h3>II. EL GANDIAZO: La Primera Corona <span>(Enero 2023 – Marzo 2023)</span></h3>
+                <p>Un año después, en enero de 2023, el destino volvió a llamar. El triunvirato formado por <span class="highlight">Darío Lozano, Carles Domínguez y Xavi Martínez</span> concibió un escenario para la gloria: El Gandiazo. En este nuevo teatro de batalla, el nombre prohibido fue pronunciado una vez más. Atunes resurgió de sus cenizas, ya no como avatares en una pantalla, sino como <strong>Atunes CF</strong>, un ejército de carne y hueso presidido por Lozano, listo para desafiar a Calle FC, las huestes comandadas por el rival Xavi Martínez.</p>
+                <p>El 25 de marzo de 2023, bajo un cielo que presagiaba historia, se libró la Primera Batalla de El Gandiazo. Fue un duelo de fútbol 6 donde seis elegidos defendieron el honor del atún: <strong>Josep Domínguez, Gerard Llopis "Guaje", Darío Lozano, Carles Domínguez, Raúl González "Zero" y Fran García</strong>.</p>
+                <p>Lo que se esperaba fuera un combate reñido se convirtió en una exhibición de poder absoluto. La maquinaria ofensiva de Atunes CF trituró las esperanzas de Calle FC. Con un <strong>9-2 aplastante</strong>, la leyenda fue escrita. El tridente de Domínguez y Fran perforó la red tres veces cada uno, Zero sumó dos estocadas mortales y Guaje selló la cuenta. Ese día, Atunes CF no solo ganó un partido; reclamó su lugar en la historia alzando el primer título oficial.</p>
+            </div>
+
+            <div class="history-chapter">
+                <h3>III. EL GANDIAZO 2: La Batalla de los 8 Guerreros <span>(Enero - Marzo 2025)</span></h3>
+                <p>El tiempo pasó y la leyenda creció. El 29 de marzo de 2025, los tambores de guerra sonaron para El Gandiazo 2. Pero la guerra había cambiado. Atunes CF llegaba con la baja del goleador Fran García, pero reforzado con sangre nueva: <strong>Eric, Shivam, Saborano, Juancho y Bobymordiscos</strong>. Tres ejércitos enemigos acechaban: Avispones FE, Ágora FC y Erasmus FC.</p>
+                <p>La tragedia golpeó antes del primer silbato. Una semana antes, Eric y Bobymordiscos cayeron en combate, lesionados. La armada quedó reducida a 8 guerreros para enfrentar el desafío más grande. La jornada comenzó con sangre ajena: Ágora despedazó a Erasmus FC.</p>
+                <p><strong>La Semifinal:</strong> Atunes CF se midió contra el rencor de Avispones FE. Con frialdad táctica y corazón de hierro, los piratas se impusieron 2-0. El capitán Darío y el recién llegado Juancho fueron los verdugos que aseguraron el pase a la final.</p>
+                <p><strong>La Gran Final vs Ágora FC:</strong> El combate final fue el más exigente. Juancho abrió el marcador, pero Ágora empató. En la segunda mitad, cuando el destino pendía de un hilo, surgió la figura titánica de <span class="highlight">Saborano</span>. Con un doblete legendario, sentenció el destino. <strong>Resultado final: 3-1</strong>.</p>
+                <p>Contra la adversidad, las lesiones y los rivales más duros, el Conjunto Pirata prevaleció. Atunes CF levantó su segundo título, consolidando una dinastía que, nacida del fracaso digital, ahora reina indiscutible sobre el césped.</p>
+            </div>
+        </div>
     </section>
 
     <section id="plantilla" class="section-container">
@@ -586,48 +678,55 @@
             <table class="calendar-table">
                 <thead>
                     <tr>
-                        <th>Fecha</th>
                         <th>Local</th>
                         <th>Visitante</th>
-                        <th>Estadio</th>
                         <th>Resultado</th>
+                        <th>Fecha</th>
+                        <th>Lugar</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr class="next-match-row">
+                        <td>ERASMUS FC</td>
+                        <td><strong>ATUNES CF</strong></td>
+                        <td><span class="match-badge" style="background-color: var(--gold); color: var(--primary);">PRÓXIMO PARTIDO</span></td>
+                        <td>8 DE FEBRERO</td>
+                        <td>Palma</td>
+                    </tr>
                     <tr>
-                        <td>8 AGOSTO - 19:00</td>
                         <td><strong>ATUNES CF</strong></td>
                         <td>MARIMBAGRINGA FC</td>
-                        <td>Beniarjó</td>
                         <td><span class="match-badge">9 - 10</span></td>
+                        <td>8 AGOSTO</td>
+                        <td>Beniarjó</td>
                     </tr>
                     <tr>
-                        <td>7 SEPTIEMBRE - 18:30</td>
                         <td><strong>ATUNES CF</strong></td>
                         <td>AVISPONES FE</td>
+                        <td><span class="match-badge">6 - 3</span></td>
+                        <td>7 SEPTIEMBRE</td>
                         <td>Beniarjó</td>
-                        <td><span class="match-badge">6-3</span></td>
                     </tr>
                     <tr>
-                        <td>28 SEPTIEMBRE - 12:00</td>
                         <td>MAYAS FC</td>
                         <td><strong>ATUNES CF</strong></td>
+                        <td><span class="match-badge">9 - 2</span></td>
+                        <td>28 SEPTIEMBRE</td>
                         <td>Palma</td>
-                         <td><span class="match-badge">9-2</span></td>
                     </tr>
                     <tr>
-                        <td>19 OCTUBRE - 10:00</td>
                         <td><strong>ATUNES CF</strong></td>
                         <td>TIKI TAKES FC</td>
+                        <td><span class="match-badge">6 - 8</span></td>
+                        <td>19 OCTUBRE</td>
                         <td>Palma</td>
-                         <td><span class="match-badge">6-8</span></td>
                     </tr>
                     <tr>
-                        <td>8 NOVIEMBRE - 11:00</td>
                         <td><strong>ATUNES CF</strong></td>
                         <td>DOLGUTS CF</td>
+                        <td><span class="match-badge">1 - 3</span></td>
+                        <td>8 NOVIEMBRE</td>
                         <td>Palma</td>
-                         <td><span class="match-badge">1-3</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -639,9 +738,8 @@
             <div class="footer-col">
                 <h4>Atunes CF</h4>
                 <ul>
-                    <li>Sobre Nosotros</li>
-                    <li>Historia del Club</li>
-                </ul>
+                    <li><a href="#historia">Historia del Club</a></li>
+                    </ul>
             </div>
             <div class="footer-col">
                 <h4>Tienda</h4>
