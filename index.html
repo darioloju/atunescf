@@ -1,4 +1,3 @@
-<!DOCTYPE html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,8 +10,8 @@
     <style>
         /* --- CONFIGURACIÓN DE COLORES Y ESTILOS --- */
         :root {
-            --primary: #001f3f;    /* Azul Oscuro Navy */
-            --primary-light: #003366; 
+            --primary: #0057B8;    /* Azul vivo Atunes */
+            --primary-light: #0074D9; 
             --gold: #d4af37;       /* Dorado Metálico */
             --gold-gradient: linear-gradient(45deg, #d4af37, #f3e5ab, #d4af37);
             --white: #ffffff;
@@ -115,7 +114,7 @@
         /* --- HERO HEADER --- */
         .hero {
             height: 90vh;
-            background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.95)), 
+            background: linear-gradient(rgba(0, 87, 184, 0.82), rgba(0, 87, 184, 0.92)), 
                         url('https://images.unsplash.com/photo-1510051640316-cee39563ddab?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -149,7 +148,7 @@
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: -2px;
-            text-shadow: 2px 2px 0px var(--primary);
+            text-shadow: 2px 2px 0px #003b7a;
             line-height: 1;
         }
 
@@ -362,6 +361,114 @@
             text-transform: uppercase;
         }
 
+
+        /* --- TIENDA / EQUIPACIONES --- */
+        .shop-intro {
+            max-width: 760px;
+            margin: -1.5rem auto 2.5rem;
+            text-align: center;
+            color: #555;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .kits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .kit-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--gold);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .kit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.16);
+        }
+
+        .kit-image-link {
+            display: block;
+            background: #fff;
+            padding: 1.5rem;
+            min-height: 290px;
+        }
+
+        .kit-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .kit-card:hover .kit-image {
+            transform: scale(1.04);
+        }
+
+        .kit-info {
+            padding: 1.4rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .kit-info h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .kit-seasons {
+            color: #666;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            min-height: 38px;
+            line-height: 1.5;
+        }
+
+        .kit-buy-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            border: 2px solid var(--primary);
+        }
+
+        .kit-buy-btn:hover {
+            background: var(--gold);
+            color: var(--primary);
+            border-color: var(--gold);
+        }
+
+        .kit-coming-soon .kit-image {
+            opacity: 0.45;
+            filter: grayscale(100%);
+        }
+
+        .kit-disabled {
+            display: inline-block;
+            background: #e5e5e5;
+            color: #777;
+            padding: 0.75rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+        }
+
         /* --- CALENDARIO (TABLA) --- */
         .table-responsive {
             overflow-x: auto;
@@ -488,10 +595,11 @@
 
         <ul class="nav-links" id="navLinks">
             <li><a href="#plantilla" onclick="toggleMenu()">Plantilla</a></li>
+            <li><a href="#equipaciones" onclick="toggleMenu()">Equipaciones</a></li>
             <li><a href="#titulos" onclick="toggleMenu()">Títulos</a></li>
             <li><a href="#calendario" onclick="toggleMenu()">Calendario</a></li>
             <li><a href="#historia" onclick="toggleMenu()">Historia</a></li>
-            <li><a href="https://zentralsports.com/producto/atunes-cf/" class="btn-shop" target="_blank">Tienda Oficial</a></li>
+            <li><a href="#equipaciones" class="btn-shop" onclick="toggleMenu()">Tienda Oficial</a></li>
         </ul>
     </nav>
 
@@ -837,7 +945,9 @@
             <div class="footer-col">
                 <h4>Tienda</h4>
                 <ul>
-                    <li><a href="https://zentralsports.com/producto/atunes-cf/" target="_blank">Comprar Equipación Oficial</a></li>
+                    <li><a href="#equipaciones">Ver equipaciones</a></li>
+                    <li><a href="https://zentralsports.com/producto/atunes-cf/" target="_blank" rel="noopener noreferrer">Comprar La Perla Negra</a></li>
+                    <li><a href="https://wadefc.com/?srsltid=AfmBOoqu6hGYYQ1XSKueF9kCh4ulnB9-rD5RJ510eK42-bauk3AWKP9b" target="_blank" rel="noopener noreferrer">Comprar La Canarinha</a></li>
                 </ul>
             </div>
             <div class="footer-col">
