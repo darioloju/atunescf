@@ -6,23 +6,22 @@
     <title>Atunes CF</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
-    
+
     <style>
         /* --- CONFIGURACIÓN DE COLORES Y ESTILOS --- */
         :root {
-            /* Cambio a un azul más vivo */
-            --primary: #0055A4;    /* Azul Vivo */
-            --primary-light: #0077E6; /* Azul Claro/Brillante */
-            --gold: #d4af37;       /* Dorado Metálico */
+            --primary: #0055A4;
+            --primary-light: #0077E6;
+            --gold: #d4af37;
+            --gold-soft: #f3e5ab;
             --gold-gradient: linear-gradient(45deg, #d4af37, #f3e5ab, #d4af37);
             --white: #ffffff;
             --light-gray: #f4f4f4;
+            --dark: #111827;
             --nav-height: 80px;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         * {
             margin: 0;
@@ -85,13 +84,11 @@
             text-transform: uppercase;
         }
 
-        .nav-links a:hover {
-            color: var(--gold);
-        }
+        .nav-links a:hover { color: var(--gold); }
 
         .btn-shop {
             background: var(--gold-gradient);
-            color: var(--primary);
+            color: var(--primary) !important;
             padding: 0.6rem 1.5rem;
             border-radius: 4px;
             font-weight: 800;
@@ -104,7 +101,6 @@
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6);
         }
 
-        /* Menú Hamburguesa */
         .menu-toggle {
             display: none;
             color: var(--gold);
@@ -115,8 +111,7 @@
         /* --- HERO HEADER --- */
         .hero {
             height: 90vh;
-            /* Se ha ajustado el color de superposición del fondo para que encaje con el azul más vivo */
-            background: linear-gradient(rgba(0, 85, 164, 0.85), rgba(0, 85, 164, 0.95)), 
+            background: linear-gradient(rgba(0, 85, 164, 0.86), rgba(0, 85, 164, 0.96)),
                         url('https://images.unsplash.com/photo-1510051640316-cee39563ddab?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -127,11 +122,11 @@
             text-align: center;
             color: var(--white);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
-            padding-bottom: 50px;
+            padding: 0 20px 50px;
         }
 
         .hero-logo-img {
-            width: 280px; 
+            width: 280px;
             height: auto;
             margin-bottom: 1.5rem;
             filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
@@ -178,9 +173,7 @@
         }
 
         /* --- SECCIONES GENERALES --- */
-        section {
-            scroll-margin-top: var(--nav-height);
-        }
+        section { scroll-margin-top: var(--nav-height); }
 
         .section-container {
             max-width: 1200px;
@@ -248,9 +241,7 @@
             transition: transform 0.3s;
         }
 
-        .shop-card:hover .shop-img-container img {
-            transform: scale(1.05);
-        }
+        .shop-card:hover .shop-img-container img { transform: scale(1.05); }
 
         .shop-info {
             padding: 25px 20px;
@@ -321,59 +312,11 @@
             gap: 15px;
         }
 
-        .titulos-list li i {
-            color: var(--gold);
-            font-size: 2rem;
-        }
-
-        /* --- ESTILOS DE HISTORIA (LA SAGA) --- */
-        .history-box {
-            background: #fff;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-left: 6px solid var(--gold);
-        }
-        
-        .history-intro {
-            font-style: italic;
-            font-weight: 700;
-            color: var(--primary-light);
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-
-        .history-chapter {
-            margin-bottom: 3rem;
-        }
-
-        .history-chapter h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-        }
-
-        .history-chapter p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            color: #444;
-            text-align: justify;
-        }
-        
-        .highlight {
-            color: var(--primary);
-            font-weight: 800;
-        }
+        .titulos-list li:last-child { margin-bottom: 0; }
+        .titulos-list li i { color: var(--gold); font-size: 2rem; }
 
         /* --- ESTILOS PLANTILLA --- */
-        .position-group {
-            margin-bottom: 4rem;
-        }
+        .position-group { margin-bottom: 4rem; }
 
         .position-title {
             font-size: 1.5rem;
@@ -410,10 +353,10 @@
             height: 220px;
             background-color: #e0e0e0;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
             overflow: hidden;
-            background-image: radial-gradient(circle at center, #eee, #ccc);
+            background-image: radial-gradient(circle at center, #ffffff, #d7e7f8);
         }
 
         .player-img img {
@@ -423,10 +366,21 @@
             object-position: top center;
         }
 
-        .card-info {
-            padding: 1rem;
-            position: relative;
+        .player-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
+
+        .card-info { padding: 1rem; position: relative; }
 
         .player-name {
             font-size: 1rem;
@@ -447,7 +401,7 @@
             font-style: italic;
             z-index: 10;
         }
-        
+
         .player-pos-label {
             font-size: 0.75rem;
             color: #888;
@@ -485,7 +439,9 @@
             font-weight: 600;
             text-align: center;
         }
-        
+
+        .team-atunes { color: var(--primary); font-weight: 900; }
+
         .match-badge {
             background: var(--primary);
             color: #fff;
@@ -502,10 +458,52 @@
             font-size: 0.8rem;
             font-weight: bold;
             color: #fff;
+            text-transform: uppercase;
         }
 
         .status-victoria { background-color: #28a745; }
         .status-derrota { background-color: #dc3545; }
+        .status-pendiente { background-color: #6c757d; }
+
+        /* --- ESTILOS DE HISTORIA (LA SAGA) --- */
+        .history-box {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--gold);
+        }
+
+        .history-intro {
+            font-style: italic;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .history-chapter { margin-bottom: 3rem; }
+        .history-chapter:last-child { margin-bottom: 0; }
+
+        .history-chapter h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .history-chapter p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #444;
+            text-align: justify;
+        }
+
+        .highlight { color: var(--primary); font-weight: 800; }
 
         /* --- FOOTER --- */
         footer {
@@ -515,7 +513,7 @@
             text-align: center;
             border-top: 5px solid var(--gold);
         }
-        
+
         .footer-cols {
             display: flex;
             justify-content: center;
@@ -532,15 +530,15 @@
 
         .footer-col ul li { margin-bottom: 10px; opacity: 0.8; }
         .footer-col ul li a:hover { color: var(--gold); text-decoration: underline; }
-        
-        /* RESPONSIVE */
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .hero h2 { font-size: 1.2rem; }
-            .hero-logo-img { width: 220px; } 
-            
+            .hero h2 { font-size: 1.2rem; letter-spacing: 3px; }
+            .hero-logo-img { width: 220px; }
+            .section-title { font-size: 2rem; }
             .menu-toggle { display: block; }
-            
+
             .nav-links {
                 position: absolute;
                 top: var(--nav-height);
@@ -556,25 +554,21 @@
                 border-bottom: 2px solid var(--gold);
             }
 
-            .nav-links.active {
-                transform: translateY(0);
-            }
-            
+            .nav-links.active { transform: translateY(0); }
             .btn-shop { margin-top: 1rem; }
             .player-card { margin-bottom: 1rem; }
             .history-box, .titulos-list { padding: 1.5rem; }
         }
-
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">
-        <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF"> 
+        <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF">
         ATUNES CF
     </div>
-    
+
     <div class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </div>
@@ -590,215 +584,19 @@
 
 <section class="hero">
     <img src="img/LOGO ATUNES.png" alt="Escudo Grande" class="hero-logo-img">
-    
     <h1>ATUNES CF</h1>
     <h2>Més Que Un Equip</h2>
-    <a href="#calendario" class="hero-btn">Ver Último Resultado</a>
+    <a href="#calendario" class="hero-btn">Ver Últimos Resultados</a>
 </section>
 
 <section id="tienda" class="section-container">
-    <h2 class="section-title">Tienda Oficial</h2>
-    <div class="shop-grid">
-        
-        <div class="shop-card">
-            <a href="https://zentralsports.com/producto/atunes-cf/" target="_blank" title="Comprar La Original">
-                <div class="shop-img-container">
-                    <img src="img/equipacion-original.jpg" alt="Equipación La Original">
-                </div>
-            </a>
-            <div class="shop-info">
-                <div class="shop-title">LA ORIGINAL</div>
-                <div class="shop-seasons">Temporadas 2022 - 23, 2023 - 24</div>
-                <a href="https://zentralsports.com/producto/atunes-cf/" class="btn-buy" target="_blank">Comprar</a>
-            </div>
-        </div>
-
-        <div class="shop-card">
-            <a href="https://zentralsports.com/producto/atunes-cf/" target="_blank" title="Comprar La Perla Negra">
-                <div class="shop-img-container">
-                    <img src="img/equipacion-perla-negra.jpg" alt="Equipación La Perla Negra">
-                </div>
-            </a>
-            <div class="shop-info">
-                <div class="shop-title">LA PERLA NEGRA</div>
-                <div class="shop-seasons">Temporadas 2024 - 25, 2025 - 26</div>
-                <a href="https://zentralsports.com/producto/atunes-cf/" class="btn-buy" target="_blank">Comprar</a>
-            </div>
-        </div>
-
-        <div class="shop-card">
-            <a href="https://wadefc.com/?srsltid=AfmBOoqu6hGYYQ1XSKueF9kCh4ulnB9-rD5RJ510eK42-bauk3AWKP9b" target="_blank" title="Comprar La Canarinha">
-                <div class="shop-img-container">
-                    <img src="img/equipacion-canarinha.jpg" alt="Equipación La Canarinha">
-                </div>
-            </a>
-            <div class="shop-info">
-                <div class="shop-title">LA CANARINHA</div>
-                <div class="shop-seasons">Temporada 2026 - 27</div>
-                <a href="https://wadefc.com/?srsltid=AfmBOoqu6hGYYQ1XSKueF9kCh4ulnB9-rD5RJ510eK42-bauk3AWKP9b" class="btn-buy" target="_blank">Comprar</a>
-            </div>
-        </div>
-
-        <div class="shop-card">
-            <div class="shop-img-container">
-                <img src="img/equipacion-coming-soon.jpg" alt="Próxima Equipación">
-            </div>
-            <div class="shop-info">
-                <div class="shop-title">LA ¿?</div>
-                <div class="shop-seasons">(COMING SOON)</div>
-                <span class="btn-buy disabled">Próximamente</span>
-            </div>
-        </div>
-
-    </div>
+    <h2 class="section-title">Equipaciones</h2>
+    <div class="shop-grid" id="shopGrid"></div>
 </section>
 
 <section id="plantilla" class="section-container">
     <h2 class="section-title">Plantilla</h2>
-
-    <div class="position-group">
-        <h3 class="position-title">Porteros</h3>
-        <div class="players-grid">
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/JOSEP DEF.jpg" alt="Josep Domínguez">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">1</span>
-                    <div class="player-name">Josep Domínguez</div>
-                    <div class="player-pos-label">Portero</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="position-group">
-        <h3 class="position-title">Defensas</h3>
-        <div class="players-grid">
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/HARDY DEF.jpg" alt="Hardy">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">10</span>
-                    <div class="player-name">Hardy</div>
-                    <div class="player-pos-label">Defensa</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/SHIVAM DEF.jpg" alt="Shivam">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">99</span>
-                    <div class="player-name">Shivam</div>
-                    <div class="player-pos-label">Defensa</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/MAFE OK.jpg" alt="Mafe">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">20</span>
-                    <div class="player-name">Mafe</div>
-                    <div class="player-pos-label">Defensa</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/HARDY DEF (2).jpg" alt="Bobymordiscos">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">69</span>
-                    <div class="player-name">Bobymordiscos</div>
-                    <div class="player-pos-label">Defensa</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="position-group">
-        <h3 class="position-title">Centrocampistas</h3>
-        <div class="players-grid">
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/CARLESD.jpg" alt="Domínguez">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">7</span>
-                    <div class="player-name">Carles Domínguez</div>
-                    <div class="player-pos-label">Centrocampista</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/PEDRITO DEF.jpg" alt="Pedrito">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">15</span>
-                    <div class="player-name">Pedrito</div>
-                    <div class="player-pos-label">Centrocampista</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/JUANCHO DEF.jpg" alt="Juancho">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">30</span>
-                    <div class="player-name">Juancho</div>
-                    <div class="player-pos-label">Centrocampista</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="position-group">
-        <h3 class="position-title">Delanteros</h3>
-        <div class="players-grid">
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/ERIC DEF.jpg" alt="Eric">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">5</span>
-                    <div class="player-name">Eric</div>
-                    <div class="player-pos-label">Delantero</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/DARIO OK.jpg" alt="Darío">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">8</span>
-                    <div class="player-name">Darío</div>
-                    <div class="player-pos-label">Delantero</div>
-                </div>
-            </div> 
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/JUAN DEF.jpg" alt="Juan">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">16</span>
-                    <div class="player-name">Juan</div>
-                    <div class="player-pos-label">Delantero</div>
-                </div>
-            </div>
-            <div class="player-card">
-                <div class="player-img">
-                    <img src="img/PELLI DEF.jpg" alt="Pelli">
-                </div>
-                <div class="card-info">
-                    <span class="player-number">22</span>
-                    <div class="player-name">Pelli</div>
-                    <div class="player-pos-label">Delantero</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="playersContainer"></div>
 </section>
 
 <section id="titulos" class="section-container">
@@ -812,7 +610,23 @@
 
 <section id="calendario" class="section-container">
     <h2 class="section-title">Calendario y Resultados</h2>
-    
+
+    <h3 class="position-title">G8 League</h3>
+    <div class="table-responsive">
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Local</th>
+                    <th>Visitante</th>
+                    <th>Resultado</th>
+                    <th>Fecha</th>
+                    <th>Resolución</th>
+                </tr>
+            </thead>
+            <tbody id="g8CalendarBody"></tbody>
+        </table>
+    </div>
+
     <h3 class="position-title">El Gandiazo</h3>
     <div class="table-responsive">
         <table class="calendar-table">
@@ -827,14 +641,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>CALLE FC</td>
                     <td><span class="match-badge">9 - 2</span></td>
                     <td>25 MARZO 2023</td>
                     <td>EL GANDIAZO - <span class="status-badge status-victoria">VICTORIA</span></td>
                 </tr>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>AVISPONES FE</td>
                     <td><span class="match-badge">2 - 0</span></td>
                     <td>29 MARZO 2025</td>
@@ -842,13 +656,13 @@
                 </tr>
                 <tr>
                     <td>ÁGORA FC</td>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td><span class="match-badge">3 - 1</span></td>
                     <td>29 MARZO 2025</td>
                     <td>EL GANDIAZO 2 (FINAL) - <span class="status-badge status-victoria">VICTORIA</span></td>
                 </tr>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>FRANKFURT GL</td>
                     <td><span class="match-badge">2 - 2</span></td>
                     <td>11 ABRIL 2026</td>
@@ -856,7 +670,7 @@
                 </tr>
                 <tr>
                     <td>ÁGORA FC</td>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td><span class="match-badge">0 - 2</span></td>
                     <td>11 ABRIL 2026</td>
                     <td>EL GANDIAZO 3 (FINAL) - <span class="status-badge status-victoria">VICTORIA</span></td>
@@ -879,21 +693,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>POTRÍES TEAM</td>
-                    <td><span class="match-badge">3 - 1</span></td>
+                    <td><span class="match-badge">3 - 7</span></td>
                     <td>3 MAYO 2025</td>
                     <td><span class="status-badge status-derrota">DERROTA</span></td>
                 </tr>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>MARIMBAGRINGA FC</td>
                     <td><span class="match-badge">9 - 10</span></td>
                     <td>8 AGOSTO 2025</td>
                     <td><span class="status-badge status-derrota">DERROTA</span></td>
                 </tr>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>AVISPONES FE</td>
                     <td><span class="match-badge">6 - 3</span></td>
                     <td>7 SEPTIEMBRE 2025</td>
@@ -901,20 +715,20 @@
                 </tr>
                 <tr>
                     <td>MAYAS FC</td>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td><span class="match-badge">9 - 2</span></td>
                     <td>28 SEPTIEMBRE 2025</td>
                     <td><span class="status-badge status-derrota">DERROTA</span></td>
                 </tr>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>TIKI TAKES FC</td>
                     <td><span class="match-badge">6 - 8</span></td>
                     <td>19 OCTUBRE 2025</td>
                     <td><span class="status-badge status-derrota">DERROTA</span></td>
                 </tr>
                 <tr>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td>DOLGUTS CF</td>
                     <td><span class="match-badge">1 - 3</span></td>
                     <td>8 NOVIEMBRE 2025</td>
@@ -922,7 +736,7 @@
                 </tr>
                 <tr>
                     <td>ERASMUS FC</td>
-                    <td><strong>ATUNES CF</strong></td>
+                    <td><span class="team-atunes">ATUNES CF</span></td>
                     <td><span class="match-badge">5 - 8</span></td>
                     <td>8 FEBRERO 2026</td>
                     <td><span class="status-badge status-victoria">VICTORIA</span></td>
@@ -934,44 +748,40 @@
 
 <section id="historia" class="section-container">
     <h2 class="section-title">Historia del Club</h2>
-    
+
     <div class="history-box">
         <p class="history-intro">
             "La Saga de Atunes: Crónicas de un Sueño. Esta es la historia de cómo un sueño se transformó en una realidad, de cómo el fracaso sembró las semillas de la gloria y de cómo un grupo de guerreros, bajo la bandera pirata, conquistaron la eternidad en los campos de La Safor."
         </p>
 
         <div class="history-chapter">
-            <h3>III. ATUNES: Una idea <span>(2022)</span></h3>
+            <h3>I. ATUNES: Una idea <span>(2022)</span></h3>
             <p>Surgió una idea: reunir a un grupo de personas excepcionales y convertirlas en algo más. Hay algo especial en quienes crecemos a orillas del Mediterráneo que nos impide conformarnos con lo convencional. <span class="highlight">Darío</span>, un xiquet criado en la costa de Gandía, entendió que en un mundo dominado por la frialdad de la electricidad y el aislamiento de las pantallas, hacía falta la calidez y el movimiento constante del mar.</p>
             <p>En 2022, junto a <span class="highlight">Xavi</span>, su fiel amigo de la infancia y cómplice de mil batallas, dio vida a este proyecto en las orillas de los pueblos de La Safor. Inicialmente soñaron con conquistar el mundo de los eSports, un club nacido de la ambición digital. Sin embargo, el destino sabía que ese no era su camino; las corrientes tenían otros planes para ellos y aquel proyecto tecnológico nunca llegó a funcionar.</p>
             <p>Pero su ambición no se evaporó. Fieles al agua como motor, buscaron en el corazón de las profundidades marinas su verdadera seña de identidad: aquel pez de plata, veloz y poderoso, que destaca sobre todos los demás. Lo que empezó como un sueño de orilla y un club fallido, estaba a punto de mutar en algo mucho más grande. Es a lo que hoy llamamos: <strong>Atunes</strong>.</p>
         </div>
 
         <div class="history-chapter">
-            <h3>III. EL GANDIAZO: La Primera Corona <span>(2023)</span></h3>
+            <h3>II. EL GANDIAZO: La Primera Corona <span>(2023)</span></h3>
             <p>Un año después, en enero de 2023, el destino llamó a la puerta. <span class="highlight">Carles Domínguez</span>, un joven paisano del pueblo de Beniarjó, decidió convocar a Darío y Xavi tras concebir un escenario para la gloria: El Gandiazo. El nombre prohibido fue pronunciado por primera vez. Atunes resurgió de su vacío, ya no como avatares en una pantalla, sino como <strong>Atunes CF</strong>, un ejército de futbolistas de carne y hueso presidido por Darío.</p>
-            <p>No obstante, este equipo lo fundó solo. En un giro inesperado, Xavi decidió no apostar por Atunes; decidió abandonar el mar para caer rendido ante las carreteras y el estilo urbano. Así nació el primer gran rival: <strong>Calle FC</strong>. Tras meses de preparación para enfrentar a Xavi y a sus huestes, Darío y Carles formaron un equipo que pronto se convirtió en una familia. Se unieron a la causa <strong>Fran</strong>, quien siendo fiel amigo de Xavi decidió restarle y unirse al conjunto azul; <strong>Zero</strong>, un joven enamorado de los eSports que quería crecer con el proyecto pasando de la pantalla al campo; <strong>Guaje</strong>, el mejor amigo de Carles; y para defender la portería, el menor de los hermanos Domínguez: <strong>Josep</strong>.</p>
-            <p>El 25 de marzo de 2023, bajo un cielo que presagiaba historia, se libró la Primera Batalla de El Gandiazo. Lo que se esperaba fuera un combate reñido se convirtió en una exhibición de poder absoluto. La maquinaria ofensiva de Atunes CF trituró las esperanzas de Calle FC con un <strong>9-2 aplastante</strong>. El dúo ofensivo que conformaban Carles y Fran perforó la red tres veces cada uno, Zero sumó dos estocadas mortales y Guaje selló la cuenta. Ese día, Atunes CF no solo ganó un partido; reclamó su lugar en la historia alzando su primer título oficial.</p>
-            <p>Pero la alegría fue breve. El revuelo causado atrajo a un poderoso equipo de Valencia: <strong>Ágora FC</strong>. Los miembros de El Gandiazo comprendieron que era inviable pelear separados, pero la unidad se rompió. Xavi y Fran abandonaron el proyecto y las cenizas de Calle FC se disolvieron. Los miembros que quedaban de Atunes y Calle unieron fuerzas para intentar derrotarlos, pero en este caso la unión no fue suficiente y Ágora les aplastó. Como una estrella fugaz, Atunes pareció quedar en el olvido, sumiéndose en el silencio y la oscuridad durante casi dos años. Pero Darío, emprendió un largo viaje para pensar en Atunes, jurando que volvería a defender ese escudo.</p>
+            <p>El 25 de marzo de 2023, bajo un cielo que presagiaba historia, se libró la Primera Batalla de El Gandiazo. Lo que se esperaba fuera un combate reñido se convirtió en una exhibición de poder absoluto. La maquinaria ofensiva de Atunes CF trituró las esperanzas de Calle FC con un <strong>9-2 aplastante</strong>. Ese día, Atunes CF no solo ganó un partido; reclamó su lugar en la historia alzando su primer título oficial.</p>
         </div>
 
         <div class="history-chapter">
             <h3>III. EL GANDIAZO 2: El Renacer <span>(2025)</span></h3>
-            <p>El tiempo pasó y la leyenda creció en el susurro de las olas. En enero de 2025, el tablero se volvió a montar. Xavi había vuelto, creando <strong>Erasmus FC</strong> y había retado a Ágora FC en un nuevo campeonato: El Gandiazo 2. Para ello, antiguos miembros de Calle formaron <strong>Avispones FE</strong>. Darío, supo que era el momento de renacer. Reunió de nuevo a la vieja guardia: los hermanos Domínguez, Guaje y Zero.</p>
-            <p>El 29 de marzo de 2025 fue la fecha fijada. Pero la guerra era distinta. Atunes CF llegaba con la baja de su goleador Fran García, pero reforzado con sangre nueva y ambiciosa: el joven promesa de Beniarjó, <strong>Eric</strong>, fiel amigo de Josep, <strong>Shivam</strong>, un amigo que hizo Darío en su largo viaje antes del renacer de Atunes, viajó desde la lejana India para pelear esta guerra al lado de su amigo, <strong>Saborano</strong>, un buen amigo de Darío que también conocía Ágora y decidió aceptar el reto de pelear contra ellos, <strong>Juancho</strong>, el primo lejano de Carles y Josep, y <strong>Bobymordiscos</strong>, uno de los guerreros de Calle FC que había sido desterrado por los miembros que fundaron Avispones. Tras largos entrenamientos, la tragedia golpeó pronto: la noche anterior, Eric cayó lesionado. La armada quedó reducida a 9 guerreros y todo hacía indicar que Atunes tenía las de perder en esta ocasión.</p>
-            <p>La guerra fue legendaria. Tras ver cómo Ágora despedazaba a Erasmus FC, y viendo como Xavi volvió a fracasar con una nueva tanda de guerreros, Atunes se midió contra el rencor de Avispones FE. Con mente fría y el corazón caliente, los piratas se impusieron 2-0 con los goles de Darío y Juancho. En la Gran Final, Atunes se enfrentó contra el gigante Ágora FC, cuando el cansancio pesaba y el destino pendía de un hilo. La batalla inició con un nuevo gol de Juancho. Poco duró la alegría para los piratas que sufrieron su primer gol en el torneo a manos de Ágora. En el descanso, los equipos estaban empatados a uno. En la segunda parte, la figura titánica de <span class="highlight">Saborano</span> lideró al equipo. Con un doblete legendario, sentenció el <strong>3-1 final</strong>. Atunes CF levantó su segundo título, consolidando una dinastía indiscutible sobre el césped. Atunes había vuelto a ganar.</p>
+            <p>El tiempo pasó y la leyenda creció en el susurro de las olas. En enero de 2025, el tablero se volvió a montar. Darío supo que era el momento de renacer. Reunió a la vieja guardia y añadió sangre nueva para que Atunes CF volviera a competir por la gloria.</p>
+            <p>El 29 de marzo de 2025, los piratas se impusieron primero a Avispones FE y después al gigante Ágora FC. Con el <strong>3-1 final</strong>, Atunes CF levantó su segundo título y consolidó una dinastía indiscutible sobre el césped. Atunes había vuelto a ganar.</p>
         </div>
 
         <div class="history-chapter">
             <h3>IV. LA CRISIS: Contra Todos <span>(2025)</span></h3>
-            <p>Sin embargo, la cima es un lugar peligroso. Tras la victoria, Shivam se vio obligado a regresar a su tierra natal marchándose como una leyenda de Atunes, y Zero, aquel que había estado desde los inicios, sucumbió ante los cantos de sirena del enemigo. En un acto de traición que dolió más que cualquier derrota, abandonó el barco para unirse a las filas de Avispones. Pero el Mediterráneo siempre equilibra la balanza: en un intercambio de guerreros, Avispones entregó a un viejo amigo de la infancia de Darío, Carles y Guaje: <strong>Juan</strong>. La traición de uno permitió que un hermano de sangre volviera a casa. A esta nueva formación se sumó <strong>Hardy</strong>, natural del pueblo de Potríes. En un acto de valentía que sacudió la comarca, Hardy renegó de las filas del equipo de su pueblo, el Potríes Team, para jurar lealtad a la bandera pirata.</p>
-            <p>Con esta renovada armada, Atunes aceptó un reto un mes después en el pueblo de Rafelcofer contra el Potríes Team. Era una batalla sencilla, sin títulos, pero cargada de una tensión eléctrica. Pero en el fútbol, como en el mar, no siempre gana el más noble. Atunes perdió con un estrepitoso 3-7. El destino del equipo volvió a quedar en el aire, sumido en la duda. Pero Darío, mirando el horizonte desde La Safor, ya sabe que el mar no se detiene ante una roca. La marea volverá a subir, y Atunes no está dispuesto a dejar pasar tanto tiempo para reclamar lo que es suyo.</p>
-            <p>Tras la victoria en El Gandiazo 2 y la derrota contra Potríes, Atunes sumó a sus filas a <strong>Pedrito</strong>, fiel amigo de Darío y Saborano, y <strong>Pelli</strong>, un amigo de la infancia de Juancho, para reforzar sus filas. Muchos equipos de diferentes pueblos de La Safor, vieron a Atunes CF como su rival a batir, por lo que reunieron a sus mejores guerreros para tratar de derrotarlos y debilitarlos: Marimbagringa, Mayas, Tiki Takes y Dolguts son los equipos que pelearon y vencieron a Atunes en su peor momento, desatando la crisis de un equipo que había perdido la credibilidad. El honor estaba en juego y Atunes solo contemplaba un escenario para volver a tocar la gloria… El Gandiazo 3.</p>
+            <p>Sin embargo, la cima es un lugar peligroso. Tras la gloria, llegaron las derrotas, las dudas y los retos de toda La Safor. Muchos equipos vieron a Atunes CF como su rival a batir, y el equipo atravesó una etapa en la que el honor volvió a estar en juego.</p>
+            <p>Pero Darío, mirando el horizonte desde La Safor, ya sabe que el mar no se detiene ante una roca. La marea volvería a subir, y Atunes no estaba dispuesto a dejar pasar tanto tiempo para reclamar lo que era suyo.</p>
         </div>
 
         <div class="history-chapter">
-            <h3>V. EL GANDIAZO 3: La Guerra De Los Mundos <span>(2026)</span></h3>
-            <p>Actualmente, Atunes CF está preparándose para la más grande de las guerras hasta la fecha: El Gandiazo 3. ¿Están preparados para culminar una trilogía legendaria?</p>
+            <h3>V. EL GANDIAZO 3 Y LA G8 LEAGUE <span>(2026)</span></h3>
+            <p>Tras completar la trilogía de El Gandiazo, Atunes CF abre una nueva etapa competitiva en la <strong>G8 League</strong>. Nuevos rivales, nuevas derrotas, nuevas heridas y una misión intacta: seguir defendiendo un escudo que ya forma parte de la historia de La Safor.</p>
         </div>
     </div>
 </section>
@@ -982,12 +792,14 @@
             <h4>Atunes CF</h4>
             <ul>
                 <li><a href="#historia">Historia del Club</a></li>
+                <li><a href="#plantilla">Plantilla 2026/27</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>Tienda</h4>
             <ul>
                 <li><a href="#tienda">Comprar Equipación Oficial</a></li>
+                <li>La Inferno ya forma parte de la colección</li>
             </ul>
         </div>
         <div class="footer-col">
@@ -997,7 +809,7 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="logo" style="justify-content: center; margin-bottom: 1rem; flex-direction: column;">
         <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF" style="height: 80px; margin-bottom: 10px;">
         ATUNES CF
@@ -1006,10 +818,218 @@
 </footer>
 
 <script>
+    const shopItems = [
+        {
+            title: "LA ORIGINAL",
+            seasons: "Temporadas 2022 - 23, 2023 - 24",
+            image: "img/equipacion-original.jpg",
+            alt: "Equipación La Original",
+            link: "https://zentralsports.com/producto/atunes-cf/",
+            button: "Comprar",
+            disabled: false
+        },
+        {
+            title: "LA PERLA NEGRA",
+            seasons: "Temporadas 2024 - 25, 2025 - 26",
+            image: "img/equipacion-perla-negra.jpg",
+            alt: "Equipación La Perla Negra",
+            link: "https://zentralsports.com/producto/atunes-cf/",
+            button: "Comprar",
+            disabled: false
+        },
+        {
+            title: "LA CANARINHA",
+            seasons: "Temporada 2026 - 27",
+            image: "img/equipacion-canarinha.jpg",
+            alt: "Equipación La Canarinha",
+            link: "https://wadefc.com/?srsltid=AfmBOoqu6hGYYQ1XSKueF9kCh4ulnB9-rD5RJ510eK42-bauk3AWKP9b",
+            button: "Comprar",
+            disabled: false
+        },
+        {
+            title: "LA INFERNO",
+            seasons: "Temporada 2026 - 27",
+            image: "img/equipacion-inferno.jpg",
+            alt: "Equipación La Inferno",
+            link: "#",
+            button: "Próximamente",
+            disabled: true
+        }
+    ];
+
+    const players = [
+        {
+            position: "Porteros",
+            label: "Portero",
+            members: [
+                { number: 1, name: "J. DOMÍNGUEZ", image: "img/JOSEP DEF.jpg" },
+                { number: 13, name: "Q. DE SANFÉLIX", image: "" }
+            ]
+        },
+        {
+            position: "Defensas",
+            label: "Defensa",
+            members: [
+                { number: 2, name: "SASHA", image: "" },
+                { number: 3, name: "MARTÍ", image: "" },
+                { number: 12, name: "V. ANGELOV", image: "" },
+                { number: 14, name: "SHIVAM", image: "img/SHIVAM DEF.jpg" },
+                { number: 19, name: "HARDY", image: "img/HARDY DEF.jpg" },
+                { number: 24, name: "CALDERÓN", image: "" }
+            ]
+        },
+        {
+            position: "Centrocampistas",
+            label: "Centrocampista",
+            members: [
+                { number: 4, name: "NICO", image: "" },
+                { number: 5, name: "ERIC", image: "img/ERIC DEF.jpg" },
+                { number: 6, name: "JUAN", image: "img/JUAN DEF.jpg" },
+                { number: 7, name: "DOMÍNGUEZ", image: "img/CARLESD.jpg" },
+                { number: 10, name: "JUANCHO", image: "img/JUANCHO DEF.jpg" },
+                { number: 20, name: "MAFÉ", image: "img/MAFE OK.jpg" }
+            ]
+        },
+        {
+            position: "Delanteros",
+            label: "Delantero",
+            members: [
+                { number: 8, name: "DARÍO", image: "img/DARIO OK.jpg" },
+                { number: 9, name: "PEDRITO", image: "img/PEDRITO DEF.jpg" },
+                { number: 11, name: "MARIO", image: "" },
+                { number: 17, name: "SAVALL", image: "" },
+                { number: 21, name: "ROJAS", image: "" },
+                { number: 22, name: "PELLI", image: "img/PELLI DEF.jpg" }
+            ]
+        }
+    ];
+
+    const g8Matches = [
+        {
+            local: "PETANCA",
+            visitante: "ATUNES CF",
+            resultado: "0 - 3",
+            fecha: "25 JUNIO 2026",
+            resolucion: "VICTORIA"
+        },
+        {
+            local: "ATUNES CF",
+            visitante: "LOS ILUMINADOS",
+            resultado: "1 - 9",
+            fecha: "30 JUNIO 2026",
+            resolucion: "DERROTA"
+        },
+        {
+            local: "ATUNES CF",
+            visitante: "REALTRASTER",
+            resultado: "2 - 17",
+            fecha: "3 JULIO 2026",
+            resolucion: "DERROTA"
+        }
+    ];
+
     function toggleMenu() {
         const navLinks = document.getElementById('navLinks');
         navLinks.classList.toggle('active');
     }
+
+    function initialsFromName(name) {
+        return name
+            .split(' ')
+            .map(word => word.charAt(0))
+            .join('')
+            .replace('.', '')
+            .slice(0, 2);
+    }
+
+    function teamClass(team) {
+        return team.toUpperCase().includes('ATUNES') ? 'team-atunes' : '';
+    }
+
+    function statusClass(status) {
+        const normalized = status.toLowerCase();
+        if (normalized.includes('victoria')) return 'status-victoria';
+        if (normalized.includes('derrota')) return 'status-derrota';
+        return 'status-pendiente';
+    }
+
+    function renderShop() {
+        const shopGrid = document.getElementById('shopGrid');
+
+        shopGrid.innerHTML = shopItems.map(item => {
+            const imageBlock = `
+                <div class="shop-img-container">
+                    <img src="${item.image}" alt="${item.alt}">
+                </div>
+            `;
+
+            const imageWrapper = item.disabled
+                ? imageBlock
+                : `<a href="${item.link}" target="_blank" title="Comprar ${item.title}">${imageBlock}</a>`;
+
+            const button = item.disabled
+                ? `<span class="btn-buy disabled">${item.button}</span>`
+                : `<a href="${item.link}" class="btn-buy" target="_blank">${item.button}</a>`;
+
+            return `
+                <div class="shop-card">
+                    ${imageWrapper}
+                    <div class="shop-info">
+                        <div class="shop-title">${item.title}</div>
+                        <div class="shop-seasons">${item.seasons}</div>
+                        ${button}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderPlayers() {
+        const playersContainer = document.getElementById('playersContainer');
+
+        playersContainer.innerHTML = players.map(group => `
+            <div class="position-group">
+                <h3 class="position-title">${group.position}</h3>
+                <div class="players-grid">
+                    ${group.members.map(player => `
+                        <div class="player-card">
+                            <div class="player-img">
+                                ${player.image
+                                    ? `<img src="${player.image}" alt="${player.name}">`
+                                    : `<div class="player-placeholder">${initialsFromName(player.name)}</div>`
+                                }
+                            </div>
+                            <div class="card-info">
+                                <span class="player-number">${player.number}</span>
+                                <div class="player-name">${player.name}</div>
+                                <div class="player-pos-label">${group.label}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderCalendar() {
+        const g8CalendarBody = document.getElementById('g8CalendarBody');
+
+        g8CalendarBody.innerHTML = g8Matches.map(match => `
+            <tr>
+                <td><span class="${teamClass(match.local)}">${match.local}</span></td>
+                <td><span class="${teamClass(match.visitante)}">${match.visitante}</span></td>
+                <td><span class="match-badge">${match.resultado}</span></td>
+                <td>${match.fecha}</td>
+                <td><span class="status-badge ${statusClass(match.resolucion)}">${match.resolucion}</span></td>
+            </tr>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderShop();
+        renderPlayers();
+        renderCalendar();
+    });
 </script>
 
 </body>
