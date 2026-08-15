@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web oficial de Atunes Club de Fútbol: plantilla, equipaciones, historia, resultados y estadísticas.">
+    <meta name="description" content="Web oficial de Atunes Club de Fútbol: plantilla, equipaciones, rivales, historia y estadísticas.">
     <title>Atunes CF | Web Oficial</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -182,7 +182,7 @@
             padding: 86px 18px 110px;
             background:
                 linear-gradient(120deg, rgba(0, 59, 115, 0.94), rgba(0, 85, 164, 0.88)),
-                url('https://images.unsplash.com/photo-1510051640316-cee39563ddab?auto=format&fit=crop&w=1920&q=80') center/cover;
+                linear-gradient(145deg, rgba(0, 85, 164, 0.24), rgba(6, 23, 47, 0.18));
             clip-path: polygon(0 0, 100% 0, 100% 92%, 50% 100%, 0 92%);
         }
         .hero::before {
@@ -259,9 +259,9 @@
         .quick-stats {
             margin: 48px auto 0;
             display: grid;
-            grid-template-columns: repeat(4, minmax(120px, 1fr));
+            grid-template-columns: repeat(3, minmax(150px, 1fr));
             gap: 14px;
-            width: min(780px, 100%);
+            width: min(720px, 100%);
         }
         .quick-stat {
             background: rgba(255,255,255,0.12);
@@ -287,6 +287,21 @@
         /* Cards */
         .grid { display: grid; gap: 24px; }
         .shop-grid { grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
+        .kit-category { margin-top: 42px; }
+        .kit-category:first-of-type { margin-top: 0; }
+        .kit-category-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-dark);
+            border-left: 6px solid var(--gold);
+            padding-left: 16px;
+            margin-bottom: 18px;
+            font-size: 1.08rem;
+            font-weight: 950;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
         .card {
             background: rgba(255,255,255,0.92);
             border: 1px solid rgba(0, 85, 164, 0.08);
@@ -462,12 +477,46 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
+        .player-card.coming-soon {
+            border-top-color: rgba(0,85,164,0.35);
+            border: 2px dashed rgba(0,85,164,0.20);
+            background: rgba(255,255,255,0.58);
+            display: grid;
+            place-items: center;
+            min-height: 304px;
+        }
+        .coming-soon-content {
+            display: grid;
+            place-items: center;
+            gap: 14px;
+            padding: 28px;
+            text-align: center;
+            color: var(--primary-dark);
+        }
+        .coming-soon-content i {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary-light));
+            color: var(--gold-soft);
+            font-size: 1.8rem;
+        }
+        .coming-soon-content strong {
+            font-size: 0.9rem;
+            font-weight: 950;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
 
         /* Estadísticas */
         .stats-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 24px;
+            width: min(680px, 100%);
+            margin: 0 auto;
         }
         .ranking-card { padding: 26px; }
         .ranking-card h3 {
@@ -508,48 +557,70 @@
             font-weight: 600;
         }
 
-        /* Exjugadores */
-        .legends-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+        /* Leyendas */
+        .legends-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
         .legend-card {
-            padding: 20px;
+            padding: 24px 20px;
             text-align: center;
             background: linear-gradient(180deg, #ffffff, #f6f9fd);
             border-radius: 18px;
             border: 1px solid rgba(0, 85, 164, 0.08);
             box-shadow: var(--shadow);
         }
-        .retired-shirt {
-            margin: 2px auto 22px;
-            width: 104px;
-            height: 126px;
-            background: linear-gradient(145deg, #06172f, #003b73 62%, #06172f);
-            border-radius: 20px 20px 14px 14px;
-            position: relative;
+        .legend-photo {
+            width: 132px;
+            height: 132px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            overflow: hidden;
             display: grid;
             place-items: center;
+            background: radial-gradient(circle at 50% 35%, #ffffff, #dbeafe 72%);
+            border: 5px solid var(--gold);
+            box-shadow: 0 14px 28px rgba(0, 31, 70, 0.16);
+        }
+        .legend-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .legend-placeholder {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary-light));
             color: var(--gold-soft);
-            font-size: 2.8rem;
+            font-size: 2rem;
             font-weight: 950;
-            letter-spacing: -0.1em;
-            box-shadow: inset 0 0 0 4px rgba(212,175,55,0.28), 0 14px 26px rgba(0,0,0,0.18);
         }
-        .retired-shirt::before, .retired-shirt::after {
-            content: '';
-            position: absolute;
-            top: 18px;
-            width: 38px;
-            height: 76px;
-            background: inherit;
-            z-index: -1;
-            border-radius: 14px;
+        .legend-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 46px;
+            height: 30px;
+            padding: 0 10px;
+            margin-bottom: 10px;
+            border-radius: 999px;
+            background: var(--primary-dark);
+            color: var(--gold-soft);
+            font-size: 0.78rem;
+            font-weight: 950;
         }
-        .retired-shirt::before { left: -27px; transform: rotate(20deg); }
-        .retired-shirt::after { right: -27px; transform: rotate(-20deg); }
         .legend-name {
             color: var(--primary-dark);
             font-weight: 950;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+        }
+        .legend-years {
+            color: var(--primary);
+            font-size: 0.74rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            margin-bottom: 9px;
         }
         .legend-honours {
             color: var(--muted);
@@ -558,117 +629,55 @@
             line-height: 1.45;
         }
 
-        /* Calendario */
-        .filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 24px;
+        /* Rivales */
+        .rivals-grid {
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
         }
-        .filter-btn {
-            border: 1px solid rgba(0,85,164,0.18);
-            background: #fff;
-            color: var(--primary-dark);
-            border-radius: 999px;
-            padding: 10px 14px;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            cursor: pointer;
-            transition: 0.22s ease;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-dark);
-            color: var(--gold-soft);
-            border-color: var(--primary-dark);
-        }
-        .table-card {
-            background: #fff;
-            border-radius: 20px;
+        .rival-card {
+            padding: 26px 18px 22px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff, #f7faff);
+            border-radius: 18px;
+            border: 1px solid rgba(0, 85, 164, 0.08);
             box-shadow: var(--shadow);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+        .rival-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-strong); }
+        .rival-crest {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(0,85,164,0.12);
+            box-shadow: inset 0 0 0 7px #f3f7fc, 0 12px 24px rgba(0,31,70,0.12);
+            display: grid;
+            place-items: center;
             overflow: hidden;
-            border: 1px solid rgba(0,85,164,0.08);
+            padding: 16px;
         }
-        .table-responsive { overflow-x: auto; }
-        .calendar-table {
+        .rival-crest img {
             width: 100%;
-            min-width: 1120px;
-            border-collapse: collapse;
+            height: 100%;
+            object-fit: contain;
         }
-        .calendar-table th {
-            background: var(--primary-dark);
+        .rival-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary-light));
             color: var(--gold-soft);
-            padding: 16px 14px;
-            font-size: 0.76rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            text-align: left;
-            white-space: nowrap;
-        }
-        .calendar-table td {
-            border-bottom: 1px solid #edf2f7;
-            padding: 16px 14px;
-            vertical-align: top;
-            font-size: 0.86rem;
-            line-height: 1.45;
-        }
-        .calendar-table tr:hover td { background: #f8fbff; }
-        .date-cell strong { display: block; color: var(--primary-dark); }
-        .date-cell span { color: var(--muted); font-size: 0.78rem; font-weight: 700; }
-        .team { font-weight: 850; color: var(--primary-dark); text-transform: uppercase; }
-        .score-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 62px;
-            background: var(--primary-dark);
-            color: #fff;
-            padding: 8px 10px;
-            border-radius: 10px;
+            font-size: 1.45rem;
             font-weight: 950;
-            font-size: 1rem;
         }
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 999px;
-            padding: 6px 10px;
-            color: #fff;
-            font-weight: 950;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-        }
-        .status-victoria { background: var(--success); }
-        .status-derrota { background: var(--danger); }
-        .status-empate { background: var(--draw); color: #1f2937; }
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            max-width: 360px;
-        }
-        .chip {
-            background: #eef5ff;
+        .rival-name {
             color: var(--primary-dark);
-            border: 1px solid rgba(0,85,164,0.10);
-            border-radius: 999px;
-            padding: 4px 8px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-        .scorers { color: #374151; font-weight: 700; }
-        .scorers span { display: block; margin-bottom: 4px; }
-        .competition {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--primary-dark);
+            font-size: 0.95rem;
             font-weight: 950;
             text-transform: uppercase;
-            font-size: 0.78rem;
+            letter-spacing: -0.02em;
         }
 
         /* Palmarés e historia */
@@ -757,7 +766,7 @@
 
         @media (max-width: 920px) {
             .stats-layout { grid-template-columns: 1fr; }
-            .quick-stats { grid-template-columns: repeat(2, 1fr); }
+            .quick-stats { grid-template-columns: repeat(3, 1fr); }
             .menu-toggle { display: block; }
             .nav-links {
                 position: fixed;
@@ -780,7 +789,7 @@
             .section-container { width: min(100% - 22px, 1220px); padding: 54px 0; }
             .hero { padding-top: 64px; clip-path: polygon(0 0, 100% 0, 100% 96%, 50% 100%, 0 96%); }
             .hero h2 { letter-spacing: 0.16em; }
-            .quick-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .quick-stats { grid-template-columns: 1fr; gap: 10px; }
             .quick-stat strong { font-size: 1.55rem; }
             .players-grid, .shop-grid, .legends-grid { grid-template-columns: 1fr; }
             .footer-grid { text-align: center; }
@@ -791,7 +800,7 @@
 
     <nav class="navbar">
         <a href="#inicio" class="brand" aria-label="Atunes CF Inicio">
-            <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF">
+            <img src="img/escudo/escudo-atunes-cf.png" alt="Escudo Atunes CF" onerror="this.style.display='none'">
             <span>Atunes CF</span>
         </a>
         <button class="menu-toggle" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false" onclick="toggleMenu()">
@@ -800,8 +809,8 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#tienda" onclick="closeMenu()">Equipaciones</a></li>
             <li><a href="#plantilla" onclick="closeMenu()">Plantilla</a></li>
-            <li><a href="#estadisticas" onclick="closeMenu()">Rankings</a></li>
-            <li><a href="#partidos" onclick="closeMenu()">Partidos</a></li>
+            <li><a href="#estadisticas" onclick="closeMenu()">Goleadores</a></li>
+            <li><a href="#rivales" onclick="closeMenu()">Rivales</a></li>
             <li><a href="#historia" onclick="closeMenu()">Historia</a></li>
             <li><a href="#tienda" class="nav-shop" onclick="closeMenu()">Tienda oficial</a></li>
         </ul>
@@ -809,18 +818,17 @@
 
     <header class="hero" id="inicio">
         <div class="hero-content">
-            <img src="img/LOGO ATUNES.png" alt="Escudo grande de Atunes CF" class="hero-logo">
+            <img src="img/escudo/escudo-atunes-cf.png" alt="Escudo grande de Atunes CF" class="hero-logo" onerror="this.style.display='none'">
             <h1>Atunes CF</h1>
             <h2>Més que un equip</h2>
             <div class="hero-actions">
-                <a class="btn btn-gold" href="#partidos"><i class="fa-solid fa-calendar-days"></i> Ver partidos</a>
-                <a class="btn btn-outline" href="#estadisticas"><i class="fa-solid fa-ranking-star"></i> Rankings históricos</a>
+                <a class="btn btn-gold" href="#rivales"><i class="fa-solid fa-shield-halved"></i> Ver rivales</a>
+                <a class="btn btn-outline" href="#estadisticas"><i class="fa-solid fa-ranking-star"></i> Goleadores históricos</a>
             </div>
-            <div class="quick-stats" aria-label="Resumen histórico Atunes CF">
-                <div class="quick-stat"><strong id="statMatches">15</strong><span>Partidos</span></div>
-                <div class="quick-stat"><strong id="statWins">7</strong><span>Victorias</span></div>
-                <div class="quick-stat"><strong id="statGoals">59</strong><span>Goles a favor</span></div>
-                <div class="quick-stat"><strong>3</strong><span>Títulos</span></div>
+            <div class="quick-stats" aria-label="Palmarés de Atunes CF">
+                <div class="quick-stat"><strong><i class="fa-solid fa-trophy"></i></strong><span>El Gandiazo</span></div>
+                <div class="quick-stat"><strong><i class="fa-solid fa-trophy"></i></strong><span>El Gandiazo 2</span></div>
+                <div class="quick-stat"><strong><i class="fa-solid fa-trophy"></i></strong><span>El Gandiazo 3</span></div>
             </div>
         </div>
     </header>
@@ -831,69 +839,44 @@
             <h2 class="section-title">Equipaciones</h2>
             <div class="gold-line"></div>
             <p class="section-subtitle">La historia de Atunes también se cuenta a través de sus camisetas: desde la primera corona hasta las equipaciones nacidas para la G8 League.</p>
-            <div class="grid shop-grid" id="kitsGrid"></div>
+            <div id="kitsContainer"></div>
         </section>
 
         <section id="plantilla" class="section-container">
             <p class="section-kicker">Temporada 2026-27</p>
             <h2 class="section-title">Plantilla</h2>
             <div class="gold-line"></div>
-            <p class="section-subtitle">
+            <p class="section-subtitle">Plantilla oficial de Atunes CF para la temporada 2026-27.</p>
             <div id="squadContainer"></div>
         </section>
 
         <section id="estadisticas" class="section-container">
             <p class="section-kicker">Archivo histórico</p>
-            <h2 class="section-title">Rankings del club</h2>
+            <h2 class="section-title">Goleadores del club</h2>
             <div class="gold-line"></div>
-            <p class="section-subtitle">Goleadores históricos y jugadores con más partidos disputados con Atunes CF.</p>
             <div class="stats-layout">
                 <article class="card ranking-card">
                     <h3><i class="fa-solid fa-futbol"></i> Goleadores históricos</h3>
                     <div class="ranking-list" id="goalsRanking"></div>
-                    <p class="ranking-note">Ranking calculado a partir de los goleadores registrados en cada partido.</p>
-                </article>
-                <article class="card ranking-card">
-                    <h3><i class="fa-solid fa-shirt"></i> Partidos jugados</h3>
-                    <div class="ranking-list" id="appsRanking"></div>
-                    <p class="ranking-note">Ranking calculado a partir de las convocatorias/jugadores que aparecen en la tabla histórica.</p>
+                    <p class="ranking-note">Top 5 histórico de goleadores del club.</p>
                 </article>
             </div>
         </section>
 
-        <section id="exjugadores" class="section-container">
-            <p class="section-kicker">Dorsales históricos</p>
-            <h2 class="section-title">Exjugadores</h2>
+        <section id="leyendas" class="section-container">
+            <p class="section-kicker">Historia del vestuario</p>
+            <h2 class="section-title">Leyendas</h2>
             <div class="gold-line"></div>
-            <p class="section-subtitle">Los nombres que dejaron huella en la primera gran etapa de Atunes, representados con la camiseta azul oscuro y el dorsal que defendieron.</p>
+            <p class="section-subtitle">Cuatro nombres que forman parte de la historia de Atunes CF.</p>
             <div class="grid legends-grid" id="legendsGrid"></div>
         </section>
 
-        <section id="partidos" class="section-container">
-            <p class="section-kicker">Resultados oficiales e históricos</p>
-            <h2 class="section-title">Partidos Atunes CF</h2>
+        <section id="rivales" class="section-container">
+            <p class="section-kicker">Historia competitiva</p>
+            <h2 class="section-title">Rivales de Atunes CF</h2>
             <div class="gold-line"></div>
-            <p class="section-subtitle">Tabla completa con fecha, local, visitante, resultado, jugadores, goleadores y competición.</p>
-            <div class="filters" id="matchFilters" aria-label="Filtros de competición"></div>
-            <div class="table-card">
-                <div class="table-responsive">
-                    <table class="calendar-table">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Local</th>
-                                <th>Visitante</th>
-                                <th>Goles</th>
-                                <th>Resultado</th>
-                                <th>Jugadores</th>
-                                <th>Goleadores</th>
-                                <th>Competición</th>
-                            </tr>
-                        </thead>
-                        <tbody id="matchesTable"></tbody>
-                    </table>
-                </div>
-            </div>
+            <p class="section-subtitle">Clubes y equipos que se han cruzado en el camino de Atunes CF. Aquí solo se muestran los rivales, sin resultados ni marcadores.</p>
+            <div class="grid rivals-grid" id="rivalsGrid"></div>
         </section>
 
         <section id="titulos" class="section-container">
@@ -950,13 +933,13 @@
                 <ul>
                     <li><a href="#historia">Historia del club</a></li>
                     <li><a href="#plantilla">Plantilla</a></li>
-                    <li><a href="#estadisticas">Rankings</a></li>
+                    <li><a href="#estadisticas">Goleadores</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Competición</h4>
                 <ul>
-                    <li><a href="#partidos">Partidos históricos</a></li>
+                    <li><a href="#rivales">Rivales históricos</a></li>
                     <li><a href="#titulos">Palmarés</a></li>
                     <li>G8 League 2026-27</li>
                 </ul>
@@ -977,60 +960,73 @@
             </div>
         </div>
         <div class="footer-logo">
-            <img src="img/LOGO ATUNES.png" alt="Escudo Atunes CF">
+            <img src="img/escudo/escudo-atunes-cf.png" alt="Escudo Atunes CF" onerror="this.style.display='none'">
             Atunes CF
         </div>
         <p class="copyright">© 2026 Atunes CF. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        const KIT_BUY_LINK = 'https://wadefc.com/products/camiseta-atunes-cf?pr_prod_strat=e5_desc&pr_rec_id=a972b5b9e&pr_rec_pid=15548131803476&pr_ref_pid=15548137144660&pr_seq=uniform';
-
+        // IMÁGENES: sube tus nuevos archivos respetando estas rutas.
         const kits = [
             {
+                category: 'Entrenamiento',
+                name: 'La Básica',
+                tag: 'Entrenamiento',
+                img: 'img/equipaciones/entrenamiento/la-basica.png',
+                desc: 'Equipación de entrenamiento de Atunes CF.'
+            },
+            {
+                category: 'Jugador',
                 name: 'La Original',
-                tag: 'Historia',
-                img: 'img/equipacion-original.jpg',
+                tag: 'Jugador',
+                img: 'img/equipaciones/jugador/la-original.png',
                 desc: 'La primera camiseta de la historia de Atunes. Con ella se ganó El Gandiazo, en 2023. Con ella, empezó todo.'
             },
             {
-                name: 'La Naranja Mecánica',
-                tag: 'Portero',
-                img: 'img/equipacion-naranja-mecanica.jpg',
-                desc: 'La primera camiseta de portero de Atunes. Inspirada en los colores de la equipación de Holanda en 1974.'
-            },
-            {
+                category: 'Jugador',
                 name: 'La Perla Negra',
-                tag: 'Comprar',
-                img: 'img/equipacion-perla-negra.jpg',
-                url: KIT_BUY_LINK,
+                tag: 'Jugador',
+                img: 'img/equipaciones/jugador/la-perla-negra.png',
+                url: 'https://zentralsports.com/producto/atunes-cf/',
                 desc: 'Enviada desde el océano más profundo del planeta, la leyenda dice que fue creada por Tritón para ganar El Gandiazo 2 y El Gandiazo 3.'
             },
             {
-                name: 'La Mutante',
-                tag: 'Portero',
-                img: 'img/equipacion-mutante.jpg',
-                desc: 'La camiseta de portero con la que se consagró la victoria de El Gandiazo 2 y El Gandiazo 3. Las paradas que se hicieron con ella eran sobrehumanas.'
-            },
-            {
+                category: 'Jugador',
                 name: 'La Canarinha',
-                tag: 'Comprar',
-                img: 'img/equipacion-canarinha.jpg',
-                url: KIT_BUY_LINK,
+                tag: 'Jugador',
+                img: 'img/equipaciones/jugador/la-canarinha.png',
+                url: 'https://wadefc.com/products/camiseta-atunes-cf?srsltid=AfmBOop0GFoJlE5TWyUjIp8tKvmISCiALFlT9MMxIiaFWYKCiRy2zXVa',
                 desc: 'Azul, amarillo y blanco, obvio claro que combinan. Todo el poder de El Baifo en una camiseta.'
             },
             {
+                category: 'Jugador',
                 name: 'La Inferno',
-                tag: 'Comprar',
-                img: 'img/equipacion-inferno.jpg',
-                url: 'https://wadefc.com/products/camiseta-atunes-cf-away?pr_prod_strat=e5_desc&pr_rec_id=dd0e444f9&pr_rec_pid=15548137144660&pr_ref_pid=15548133900628&pr_seq=uniform',
+                tag: 'Jugador',
+                img: 'img/equipaciones/jugador/la-inferno.png',
+                url: 'https://wadefc.com/products/camiseta-atunes-cf-away?pr_prod_strat=e5_desc&pr_rec_id=4d1a6f1a7&pr_rec_pid=15548137144660&pr_ref_pid=15548131803476&pr_seq=uniform',
                 desc: 'Emergida del fuego de la hoguera de San Juan para usarla en el césped del terreno de juego.'
             },
             {
+                category: 'Portero',
+                name: 'La Naranja Mecánica',
+                tag: 'Portero',
+                img: 'img/equipaciones/portero/la-naranja-mecanica.png',
+                desc: 'La primera camiseta de portero de Atunes. Inspirada en los colores de la equipación de Holanda en 1974.'
+            },
+            {
+                category: 'Portero',
+                name: 'La Mutante',
+                tag: 'Portero',
+                img: 'img/equipaciones/portero/la-mutante.png',
+                desc: 'La camiseta de portero con la que se consagró la victoria de El Gandiazo 2 y El Gandiazo 3. Las paradas que se hicieron con ella eran sobrehumanas.'
+            },
+            {
+                category: 'Portero',
                 name: 'La Araña Negra',
-                tag: 'Comprar',
-                img: 'img/equipacion-arana-negra.jpg',
-                url: 'https://wadefc.com/products/camiseta-atunes-cf-gk?pr_prod_strat=e5_desc&pr_rec_id=1c4f65bb2&pr_rec_pid=15548133900628&pr_ref_pid=15548131803476&pr_seq=uniform',
+                tag: 'Portero',
+                img: 'img/equipaciones/portero/la-arana-negra.png',
+                url: 'https://wadefc.com/products/camiseta-atunes-cf-gk?pr_prod_strat=e5_desc&pr_rec_id=27a7549fe&pr_rec_pid=15548133900628&pr_ref_pid=15548137144660&pr_seq=uniform',
                 desc: 'Emergida para trazar una telaraña que cubra toda la red de la portería, haciendo honor al sobrenombre del portero más legendario de la historia de Atunes: Josep Domínguez.'
             }
         ];
@@ -1039,130 +1035,99 @@
             {
                 position: 'Porteros',
                 players: [
-                    { number: 1, name: 'J. DOMÍNGUEZ', label: 'Portero', img: 'img/JOSEP DEF.jpg' },
-                    { number: 13, name: 'Q. DE SANFÉLIX', label: 'Portero' }
+                    { number: 1, name: 'J. DOMÍNGUEZ', label: 'Portero', img: 'img/plantilla/01-j-dominguez.png' },
+                    { number: 13, name: 'Q. DE SANFÉLIX', label: 'Portero', img: 'img/plantilla/13-q-de-sanfelix.png' }
                 ]
             },
             {
                 position: 'Defensas',
                 players: [
-                    { number: 2, name: 'SASHA', label: 'Defensa' },
-                    { number: 3, name: 'MARTÍ', label: 'Defensa' },
-                    { number: 12, name: 'V. ANGELOV', label: 'Defensa' },
-                    { number: 14, name: 'SHIVAM', label: 'Defensa', img: 'img/SHIVAM DEF.jpg' },
-                    { number: 19, name: 'HARDY', label: 'Defensa', img: 'img/HARDY DEF.jpg' },
-                    { number: 24, name: 'CALDERÓN', label: 'Defensa' }
+                    { number: 3, name: 'MARTÍ', label: 'Defensa', img: 'img/plantilla/03-marti.png' },
+                    { number: 4, name: 'V. ANGELOV', label: 'Defensa', img: 'img/plantilla/04-v-angelov.png' },
+                    { number: 14, name: 'SHIVAM', label: 'Defensa', img: 'img/plantilla/14-shivam.png' },
+                    { number: 19, name: 'HARDY', label: 'Defensa', img: 'img/plantilla/19-hardy.png' },
+                    { comingSoon: true, name: 'MORE COMING SOON' }
                 ]
             },
             {
                 position: 'Centrocampistas',
                 players: [
-                    { number: 4, name: 'NICO', label: 'Centrocampista' },
-                    { number: 5, name: 'ERIC', label: 'Centrocampista', img: 'img/ERIC DEF.jpg' },
-                    { number: 6, name: 'JUAN', label: 'Centrocampista', img: 'img/JUAN DEF.jpg' },
-                    { number: 7, name: 'DOMÍNGUEZ', label: 'Centrocampista', img: 'img/CARLESD.jpg' },
-                    { number: 10, name: 'JUANCHO', label: 'Centrocampista', img: 'img/JUANCHO DEF.jpg' },
-                    { number: 20, name: 'MAFÉ', label: 'Centrocampista', img: 'img/MAFE OK.jpg' }
+                    { number: 6, name: 'JUAN', label: 'Centrocampista', img: 'img/plantilla/06-juan.png' },
+                    { number: 7, name: 'DOMÍNGUEZ', label: 'Centrocampista', img: 'img/plantilla/07-dominguez.png' },
+                    { number: 10, name: 'JUANCHO', label: 'Centrocampista', img: 'img/plantilla/10-juancho.png' },
+                    { number: 23, name: 'VILA', label: 'Centrocampista', img: 'img/plantilla/23-vila.png' },
+                    { comingSoon: true, name: 'MORE COMING SOON' }
                 ]
             },
             {
                 position: 'Delanteros',
                 players: [
-                    { number: 8, name: 'DARÍO', label: 'Delantero', img: 'img/DARIO OK.jpg' },
-                    { number: 9, name: 'PEDRITO', label: 'Delantero', img: 'img/PEDRITO DEF.jpg' },
-                    { number: 11, name: 'SAVALL', label: 'Delantero' },
-                    { number: 21, name: 'ROJAS', label: 'Delantero' },
-                    { number: 22, name: 'PELLI', label: 'Delantero', img: 'img/PELLI DEF.jpg' },
-                    { number: 51, name: 'MARIO', label: 'Delantero' }
+                    { number: 8, name: 'DARÍO', label: 'Delantero', img: 'img/plantilla/08-dario.png' },
+                    { number: 9, name: 'PEDRITO', label: 'Delantero', img: 'img/plantilla/09-pedrito.png' },
+                    { number: 22, name: 'PELLI', label: 'Delantero', img: 'img/plantilla/22-pelli.png' },
+                    { comingSoon: true, name: 'MORE COMING SOON' }
                 ]
             }
         ];
 
         const legends = [
-            { number: 13, name: 'FRAN GARCÍA', honours: 'Campeón de El Gandiazo' },
-            { number: 11, name: 'ZERO', honours: 'Campeón de El Gandiazo y El Gandiazo 2' },
-            { number: 14, name: 'GERARD', honours: 'Campeón de El Gandiazo y El Gandiazo 2' },
-            { number: 73, name: 'SABORANO', honours: 'Campeón de El Gandiazo 2 y El Gandiazo 3' },
-            { number: 11, name: 'JONAY', honours: 'Exjugador de Atunes CF' }
-        ];
-
-        const matches = [
             {
-                date: '25 MARZO 2023', season: 'Temporada 2022-23', local: 'Atunes CF', visitante: 'Calle FC', score: '9-2', result: 'Victoria', competition: 'El Gandiazo',
-                players: ['1 - J. DOMÍNGUEZ', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - GERARD', '11 - ZERO', '13 - FRAN GARCÍA'],
-                scorers: [{ name: 'DOMÍNGUEZ', goals: 3 }, { name: 'FRAN GARCÍA', goals: 3 }, { name: 'ZERO', goals: 2 }, { name: 'GERARD', goals: 1 }]
+                number: 11,
+                name: 'RAÚL GONZÁLEZ',
+                years: '2022 - 2025',
+                img: 'img/leyendas/raul-gonzalez.png',
+                honours: 'Campeón de El Gandiazo y El Gandiazo 2'
             },
             {
-                date: '29 MARZO 2025', season: 'Temporada 2024-25', local: 'Atunes CF', visitante: 'Avispones FE', score: '2-0', result: 'Victoria', competition: 'El Gandiazo 2',
-                players: ['1 - J. DOMÍNGUEZ', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - SHIVAM', '11 - ZERO', '14 - GERARD', '30 - JUANCHO', '69 - BOBYMORDISCOS', '73 - SABORANO'],
-                scorers: [{ name: 'DARÍO', goals: 1 }, { name: 'JUANCHO', goals: 1 }]
+                number: 14,
+                name: 'GERARD LLOPIS',
+                years: '2022 - 2026',
+                img: 'img/leyendas/gerard-llopis.png',
+                honours: 'Campeón de El Gandiazo y El Gandiazo 2'
             },
             {
-                date: '29 MARZO 2025', season: 'Temporada 2024-25', local: 'Ágora FC', visitante: 'Atunes CF', score: '1-3', result: 'Victoria', competition: 'El Gandiazo 2',
-                players: ['1 - J. DOMÍNGUEZ', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - SHIVAM', '11 - ZERO', '14 - GERARD', '30 - JUANCHO', '69 - BOBYMORDISCOS', '73 - SABORANO'],
-                scorers: [{ name: 'JUANCHO', goals: 1 }, { name: 'SABORANO', goals: 2 }]
+                number: 73,
+                name: 'CARLOS SÁNCHEZ',
+                years: '2024 - 2026',
+                img: 'img/leyendas/carlos-sanchez.png',
+                honours: 'Campeón de El Gandiazo 2 y El Gandiazo 3'
             },
             {
-                date: '3 MAYO 2025', season: 'Temporada 2024-25', local: 'Atunes CF', visitante: 'Potríes Team', score: '3-7', result: 'Derrota', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '11 - HARDY', '14 - GERARD', '16 - JUAN'],
-                scorers: [{ name: 'JUAN', goals: 1 }, { name: 'ERIC', goals: 2 }]
-            },
-            {
-                date: '8 AGOSTO 2025', season: 'Temporada 2025-26', local: 'Atunes CF', visitante: 'Marimbaginga CF', score: '9-10', result: 'Derrota', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '30 - JUANCHO', '73 - SABORANO', '69 - BOBYMORDISCOS'],
-                scorers: [{ name: 'ERIC', goals: 6 }, { name: 'JUANCHO', goals: 1 }, { name: 'HARDY', goals: 1 }, { name: 'SABORANO', goals: 1 }]
-            },
-            {
-                date: '7 SEPTIEMBRE 2025', season: 'Temporada 2025-26', local: 'Atunes CF', visitante: 'Avispones FE', score: '6-3', result: 'Victoria', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '14 - GERARD', '30 - JUANCHO', '69 - BOBYMORDISCOS'],
-                scorers: [{ name: 'ERIC', goals: 3 }, { name: 'JUANCHO', goals: 3 }]
-            },
-            {
-                date: '28 SEPTIEMBRE 2025', season: 'Temporada 2025-26', local: 'Mayas FC', visitante: 'Atunes CF', score: '9-2', result: 'Derrota', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '15 - PEDRITO', '22 - PELLI', '30 - JUANCHO', '69 - BOBYMORDISCOS'],
-                scorers: [{ name: 'ERIC', goals: 1 }, { name: 'PELLI', goals: 1 }]
-            },
-            {
-                date: '19 OCTUBRE 2025', season: 'Temporada 2025-26', local: 'Atunes CF', visitante: 'Tiki Takes FC', score: '6-8', result: 'Derrota', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '15 - PEDRITO', '30 - JUANCHO', '69 - BOBYMORDISCOS', '73 - SABORANO'],
-                scorers: [{ name: 'ERIC', goals: 3 }, { name: 'PEDRITO', goals: 2 }, { name: 'SABORANO', goals: 1 }]
-            },
-            {
-                date: '8 NOVIEMBRE 2025', season: 'Temporada 2025-26', local: 'Atunes CF', visitante: 'Dolguts CF', score: '1-3', result: 'Derrota', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '14 - GERARD', '16 - JUAN', '51 - VÍCTOR ANGELOV', '69 - BOBYMORDISCOS'],
-                scorers: [{ name: 'VÍCTOR ANGELOV', goals: 1 }]
-            },
-            {
-                date: '8 FEBRERO 2026', season: 'Temporada 2025-26', local: 'Erasmus FC', visitante: 'Atunes CF', score: '5-8', result: 'Victoria', competition: 'Amistoso',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '14 - GERARD', '20 - MAFÉ', '52 - MARIO RIBAS'],
-                scorers: [{ name: 'ERIC', goals: 3 }, { name: 'MARIO RIBAS', goals: 2 }, { name: 'DOMÍNGUEZ', goals: 2 }, { name: 'HARDY', goals: 1 }]
-            },
-            {
-                date: '11 ABRIL 2026', season: 'Temporada 2025-26', local: 'Atunes CF', visitante: 'Frankfurt GL', score: '2-2', result: 'Empate', competition: 'El Gandiazo 3',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '15 - PEDRITO', '16 - JUAN', '20 - MAFÉ', '22 - PELLI', '30 - JUANCHO', '69 - BOBYMORDISCOS'],
-                scorers: [{ name: 'PELLI', goals: 1 }, { name: 'PEDRITO', goals: 1 }]
-            },
-            {
-                date: '11 ABRIL 2026', season: 'Temporada 2025-26', local: 'Ágora FC', visitante: 'Atunes CF', score: '0-2', result: 'Victoria', competition: 'El Gandiazo 3',
-                players: ['1 - J. DOMÍNGUEZ', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - HARDY', '15 - PEDRITO', '16 - JUAN', '20 - MAFÉ', '22 - PELLI', '30 - JUANCHO', '69 - BOBYMORDISCOS'],
-                scorers: [{ name: 'JUANCHO', goals: 1 }, { name: 'MAFÉ', goals: 1 }]
-            },
-            {
-                date: '25 JUNIO 2026', season: 'Temporada 2026-27', local: 'Petanca FC', visitante: 'Atunes CF', score: '0-3', result: 'Victoria', competition: 'G8 League',
-                players: ['1 - J. DOMÍNGUEZ', '2 - SASHA', '3 - MARTÍ', '7 - DOMÍNGUEZ', '8 - DARÍO', '10 - JUANCHO', '11 - JONAY', '19 - HARDY', '21 - ROJAS', '69 - BOBYMORDISCOS'],
-                scorers: [], note: 'Victoria por alineación indebida del equipo rival.'
-            },
-            {
-                date: '30 JUNIO 2026', season: 'Temporada 2026-27', local: 'Atunes CF', visitante: 'Los Iluminados', score: '1-9', result: 'Derrota', competition: 'G8 League',
-                players: ['1 - J. DOMÍNGUEZ', '4 - NICO', '5 - ERIC', '7 - DOMÍNGUEZ', '8 - DARÍO', '13 - Q. DE SANFÉLIX', '19 - HARDY', '21 - ROJAS', '24 - CALDERÓN'],
-                scorers: [{ name: 'CALDERÓN', goals: 1 }]
-            },
-            {
-                date: '3 JULIO 2026', season: 'Temporada 2026-27', local: 'Atunes CF', visitante: 'RealTraster', score: '2-17', result: 'Derrota', competition: 'G8 League',
-                players: ['1 - J. DOMÍNGUEZ', '4 - NICO', '8 - DARÍO', '11 - SAVALL'],
-                scorers: [{ name: 'DARÍO', goals: 1 }, { name: 'NICO', goals: 1 }]
+                number: 5,
+                name: 'ERIC BARBER',
+                years: '2024 - 2026',
+                img: 'img/leyendas/eric-barber.png',
+                honours: 'Máximo goleador de la historia del club'
             }
         ];
+
+        const rivals = [
+            { name: 'Calle FC', img: 'img/rivales/calle-fc.png' },
+            { name: 'Avispones FE', img: 'img/rivales/avispones-fe.png' },
+            { name: 'Ágora FC', img: 'img/rivales/agora-fc.png' },
+            { name: 'Potríes Team', img: 'img/rivales/potries-team.png' },
+            { name: 'Marimbagringa FC', img: 'img/rivales/marimbagringa-fc.png' },
+            { name: 'Mayas FC', img: 'img/rivales/mayas-fc.png' },
+            { name: 'Tiki Takes FC', img: 'img/rivales/tiki-takes-fc.png' },
+            { name: 'Dolguts CF', img: 'img/rivales/dolguts-cf.png' },
+            { name: 'Erasmus FC', img: 'img/rivales/erasmus-fc.png' },
+            { name: 'Frankfurt GL', img: 'img/rivales/frankfurt-gl.png' },
+            { name: 'Petanca FC', img: 'img/rivales/petanca-fc.png' },
+            { name: 'Los Iluminados', img: 'img/rivales/los-iluminados.png' },
+            { name: 'RealTraster', img: 'img/rivales/realtraster.png' },
+            { name: 'Jägger Múnich', img: 'img/rivales/jagger-munich.png' },
+            { name: 'Grao City', img: 'img/rivales/grao-city.png' }
+        ];
+
+        // Los resultados ya no se muestran en la web. Se conserva únicamente
+        // el top 5 histórico de goleadores indicado por el club.
+        const historicalGoals = {
+            'ERIC BARBER': 18,
+            'JUANCHO GALÁN': 7,
+            'CARLES DOMÍNGUEZ': 5,
+            'CARLOS SÁNCHEZ': 4,
+            'PEDRITO': 3
+        };
 
         function sanitizeInitials(name) {
             return name
@@ -1175,20 +1140,32 @@
         }
 
         function renderKits() {
-            const grid = document.getElementById('kitsGrid');
-            grid.innerHTML = kits.map(kit => `
-                <article class="card shop-card">
-                    <span class="kit-tag">${kit.tag}</span>
-                    <div class="kit-img">
-                        <img src="${kit.img}" alt="Equipación ${kit.name}" loading="lazy" onerror="this.replaceWith(createKitFallback('${kit.name.replace(/'/g, "\\'")}'))">
+            const container = document.getElementById('kitsContainer');
+            const categoryOrder = ['Entrenamiento', 'Jugador', 'Portero'];
+
+            container.innerHTML = categoryOrder.map(category => {
+                const categoryKits = kits.filter(kit => kit.category === category);
+                return `
+                    <div class="kit-category">
+                        <h3 class="kit-category-title"><i class="fa-solid fa-shirt"></i> ${category}</h3>
+                        <div class="grid shop-grid">
+                            ${categoryKits.map(kit => `
+                                <article class="card shop-card">
+                                    <span class="kit-tag">${kit.tag}</span>
+                                    <div class="kit-img">
+                                        <img src="${kit.img}" alt="Equipación ${kit.name}" loading="lazy" onerror="this.replaceWith(createKitFallback('${kit.name.replace(/'/g, "\\'")}'))">
+                                    </div>
+                                    <div class="kit-info">
+                                        <h3 class="kit-title">${kit.name}</h3>
+                                        <p class="kit-desc">${kit.desc}</p>
+                                        ${kit.url ? `<a class="btn btn-gold kit-link" href="${kit.url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>` : ''}
+                                    </div>
+                                </article>
+                            `).join('')}
+                        </div>
                     </div>
-                    <div class="kit-info">
-                        <h3 class="kit-title">${kit.name}</h3>
-                        <p class="kit-desc">${kit.desc}</p>
-                        ${kit.url ? `<a class="btn btn-gold kit-link" href="${kit.url}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>` : ''}
-                    </div>
-                </article>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function createKitFallback(name) {
@@ -1202,12 +1179,19 @@
             const container = document.getElementById('squadContainer');
             container.innerHTML = squad.map(group => `
                 <div class="position-group">
-                    <h3 class="position-title">${group.position} <small>${group.players.length}</small></h3>
+                    <h3 class="position-title">${group.position} <small>${group.players.filter(player => !player.comingSoon).length}</small></h3>
                     <div class="grid players-grid">
-                        ${group.players.map(player => `
+                        ${group.players.map(player => player.comingSoon ? `
+                            <article class="player-card coming-soon">
+                                <div class="coming-soon-content">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <strong>${player.name}</strong>
+                                </div>
+                            </article>
+                        ` : `
                             <article class="player-card">
                                 <div class="player-img">
-                                    ${player.img ? `<img src="${player.img}" alt="${player.name}" loading="lazy" onerror="this.replaceWith(createPlayerFallback('${sanitizeInitials(player.name)}'))">` : `<div class="player-placeholder">${sanitizeInitials(player.name)}</div>`}
+                                    <img src="${player.img}" alt="${player.name}" loading="lazy" onerror="this.replaceWith(createPlayerFallback('${sanitizeInitials(player.name)}'))">
                                 </div>
                                 <div class="card-info">
                                     <span class="player-number">${player.number}</span>
@@ -1228,29 +1212,6 @@
             return div;
         }
 
-        function playerNameFromChip(chip) {
-            return chip.replace(/^\d+\s*-\s*/, '').trim();
-        }
-
-        function calculateGoals() {
-            return matches.reduce((acc, match) => {
-                match.scorers.forEach(scorer => {
-                    acc[scorer.name] = (acc[scorer.name] || 0) + scorer.goals;
-                });
-                return acc;
-            }, {});
-        }
-
-        function calculateApps() {
-            return matches.reduce((acc, match) => {
-                match.players.forEach(player => {
-                    const name = playerNameFromChip(player);
-                    acc[name] = (acc[name] || 0) + 1;
-                });
-                return acc;
-            }, {});
-        }
-
         function renderRanking(targetId, data, suffix) {
             const target = document.getElementById(targetId);
             const entries = Object.entries(data)
@@ -1265,63 +1226,45 @@
             `).join('');
         }
 
+        function createLegendFallback(initials) {
+            const div = document.createElement('div');
+            div.className = 'legend-placeholder';
+            div.textContent = initials;
+            return div;
+        }
+
         function renderLegends() {
             const grid = document.getElementById('legendsGrid');
             grid.innerHTML = legends.map(legend => `
                 <article class="legend-card">
-                    <div class="retired-shirt" aria-label="Camiseta dorsal ${legend.number}">${legend.number}</div>
+                    <div class="legend-photo">
+                        <img src="${legend.img}" alt="${legend.name}" loading="lazy" onerror="this.replaceWith(createLegendFallback('${sanitizeInitials(legend.name)}'))">
+                    </div>
+                    <span class="legend-number">#${legend.number}</span>
                     <h3 class="legend-name">${legend.name}</h3>
+                    <p class="legend-years">${legend.years}</p>
                     <p class="legend-honours">${legend.honours}</p>
                 </article>
             `).join('');
         }
 
-        function resultClass(result) {
-            return result.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        function createRivalFallback(initials) {
+            const div = document.createElement('div');
+            div.className = 'rival-placeholder';
+            div.textContent = initials;
+            return div;
         }
 
-        function renderFilters() {
-            const competitions = ['Todos', ...new Set(matches.map(match => match.competition))];
-            const filters = document.getElementById('matchFilters');
-            filters.innerHTML = competitions.map((competition, index) => `
-                <button class="filter-btn ${index === 0 ? 'active' : ''}" data-filter="${competition}">${competition}</button>
+        function renderRivals() {
+            const grid = document.getElementById('rivalsGrid');
+            grid.innerHTML = rivals.map(rival => `
+                <article class="rival-card">
+                    <div class="rival-crest">
+                        <img src="${rival.img}" alt="Escudo ${rival.name}" loading="lazy" onerror="this.replaceWith(createRivalFallback('${sanitizeInitials(rival.name)}'))">
+                    </div>
+                    <h3 class="rival-name">${rival.name}</h3>
+                </article>
             `).join('');
-
-            filters.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    filters.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    renderMatches(button.dataset.filter);
-                });
-            });
-        }
-
-        function renderMatches(filter = 'Todos') {
-            const tbody = document.getElementById('matchesTable');
-            const filteredMatches = filter === 'Todos' ? matches : matches.filter(match => match.competition === filter);
-
-            tbody.innerHTML = filteredMatches.map(match => `
-                <tr>
-                    <td class="date-cell"><strong>${match.date}</strong><span>${match.season}</span></td>
-                    <td class="team">${match.local}</td>
-                    <td class="team">${match.visitante}</td>
-                    <td><span class="score-badge">${match.score}</span></td>
-                    <td><span class="status-badge status-${resultClass(match.result)}">${match.result}</span></td>
-                    <td><div class="chips">${match.players.map(player => `<span class="chip">${player}</span>`).join('')}</div></td>
-                    <td class="scorers">
-                        ${match.scorers.length ? match.scorers.map(scorer => `<span>${scorer.goals}x ${scorer.name}</span>`).join('') : `<span>${match.note || 'Sin goleadores registrados'}</span>`}
-                    </td>
-                    <td><span class="competition"><i class="fa-solid fa-trophy"></i> ${match.competition}</span></td>
-                </tr>
-            `).join('');
-        }
-
-        function updateHeroStats() {
-            const wins = matches.filter(match => match.result === 'Victoria').length;
-            const goalsFor = matches.reduce((total, match) => total + Number(match.score.split('-')[match.local === 'Atunes CF' ? 0 : 1]), 0);
-            document.getElementById('statMatches').textContent = matches.length;
-            document.getElementById('statWins').textContent = wins;
-            document.getElementById('statGoals').textContent = goalsFor;
         }
 
         function toggleMenu() {
@@ -1345,12 +1288,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderKits();
             renderSquad();
-            renderRanking('goalsRanking', calculateGoals(), 'goles');
-            renderRanking('appsRanking', calculateApps(), 'PJ');
+            renderRanking('goalsRanking', historicalGoals, 'goles');
             renderLegends();
-            renderFilters();
-            renderMatches();
-            updateHeroStats();
+            renderRivals();
         });
     </script>
 </body>
