@@ -394,129 +394,97 @@
         .kit-link { align-self: flex-start; margin-top: 8px; }
 
         /* Plantilla */
-        .players-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 22px;
+        .position-group { margin-top: 44px; }
+        .position-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            border-left: 6px solid var(--gold);
+            padding-left: 16px;
+            margin-bottom: 18px;
+            font-weight: 950;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
-
+        .position-title small {
+            color: var(--muted);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+        .players-grid { grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); }
         .player-card {
             position: relative;
-            min-width: 0;
-            background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
-            border: 1px solid rgba(0, 85, 164, 0.10);
-            border-top: 4px solid var(--gold);
-            border-radius: 18px;
+            background: var(--card);
+            border-radius: 16px;
             box-shadow: var(--shadow);
             overflow: hidden;
+            border-top: 4px solid var(--gold);
             transition: transform 0.22s ease, box-shadow 0.22s ease;
         }
-
-        .player-card:hover {
-            transform: translateY(-7px);
-            box-shadow: var(--shadow-strong);
-        }
-
+        .player-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-strong); }
         .player-img {
-            position: relative;
-            aspect-ratio: 4 / 5;
-            background:
-                radial-gradient(circle at 50% 28%, rgba(255,255,255,0.98), rgba(219,234,254,0.92) 58%, rgba(0,85,164,0.10) 100%);
+            height: 220px;
+            background: radial-gradient(circle at 50% 35%, #ffffff, #e2e8f0 72%);
             display: grid;
-            place-items: end center;
+            place-items: center;
             overflow: hidden;
-            border-bottom: 1px solid rgba(0,85,164,0.10);
         }
-
-        .player-img::after {
-            content: '';
-            position: absolute;
-            inset: auto 0 0;
-            height: 34%;
-            background: linear-gradient(180deg, transparent, rgba(6,23,47,0.14));
-            pointer-events: none;
-        }
-
         .player-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            transform: scale(1.01);
         }
-
         .player-placeholder {
-            width: 100%;
-            height: 100%;
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
             display: grid;
             place-items: center;
-            background:
-                radial-gradient(circle at 50% 30%, var(--primary-light), var(--primary-dark) 70%);
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary-light));
             color: var(--gold-soft);
             font-weight: 950;
-            font-size: 2.2rem;
-            letter-spacing: -0.04em;
+            font-size: 1.6rem;
+            box-shadow: inset 0 0 0 5px rgba(212,175,55,0.30);
         }
-
+        .card-info { position: relative; padding: 18px 16px 20px; }
         .player-number {
             position: absolute;
-            top: 14px;
-            left: 14px;
-            z-index: 2;
-            min-width: 44px;
-            height: 44px;
-            padding: 0 10px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,59,115,0.94);
-            border: 1px solid rgba(212,175,55,0.55);
-            color: var(--gold-soft);
-            font-size: 1.1rem;
+            top: -54px;
+            right: 12px;
+            color: var(--white);
+            font-size: 4.1rem;
             line-height: 1;
             font-weight: 950;
-            box-shadow: 0 8px 20px rgba(0,31,70,0.20);
+            letter-spacing: -0.12em;
+            font-style: italic;
+            text-shadow: 0 8px 18px rgba(0, 0, 0, 0.62);
         }
-
-        .card-info {
-            padding: 17px 16px 19px;
-        }
-
         .player-name {
             color: var(--primary-dark);
-            font-size: 0.98rem;
-            line-height: 1.12;
-            font-weight: 950;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: -0.025em;
-            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
         }
-
+        .player-name strong { font-weight: 950; }
+        .player-pos-label {
+            color: var(--primary-dark);
+            font-size: 0.76rem;
+            font-weight: 850;
+            text-transform: uppercase;
+            letter-spacing: 0.055em;
+            line-height: 1.35;
+            margin-bottom: 4px;
+        }
         .player-meta {
-            display: grid;
-            gap: 5px;
-        }
-
-        .player-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 7px;
             color: var(--muted);
-            font-size: 0.73rem;
-            line-height: 1.3;
-            font-weight: 800;
-        }
-
-        .player-meta-row i {
-            width: 14px;
-            color: var(--primary);
-            text-align: center;
-            font-size: 0.68rem;
-        }
-
-        @media (max-width: 980px) {
-            .players-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            font-size: 0.72rem;
+            font-weight: 750;
+            line-height: 1.35;
         }
 
         /* Estadísticas */
@@ -863,6 +831,7 @@
             <p class="section-kicker">Archivo histórico</p>
             <h2 class="section-title">Goleadores del club</h2>
             <div class="gold-line"></div>
+            <p class="section-subtitle">Top 5 de goleadores históricos de Atunes CF.</p>
             <div class="stats-layout">
                 <article class="card ranking-card">
                     <h3><i class="fa-solid fa-futbol"></i> Goleadores históricos</h3>
@@ -1041,27 +1010,48 @@
         ];
 
         const squad = [
-            { number: 1,  name: 'JOSEP DOMÍNGUEZ',    position: 'Portero',          country: 'España',   age: 18, img: 'img/plantilla/01-j-dominguez.png' },
-            { number: 3,  name: 'JORGE MARTÍ',        position: 'Defensa',          country: 'España',   age: 22, img: 'img/plantilla/03-marti.png' },
-            { number: 4,  name: 'MARCOS BLASCO',      position: 'Defensa',          country: 'España',   age: 19, img: 'img/plantilla/04-marcos-blasco.png' },
-            { number: 5,  name: 'VÍCTOR ANGELOV',     position: 'Defensa',          country: 'Bulgaria', age: 16, img: 'img/plantilla/05-victor-angelov.png' },
-            { number: 6,  name: 'DAVID CASTELLANO',   position: 'Centrocampista',   country: 'España',   age: 24, img: 'img/plantilla/06-juan.png' },
-            { number: 7,  name: 'CARLES DOMÍNGUEZ',   position: 'Centrocampista',   country: 'España',   age: 21, img: 'img/plantilla/07-dominguez.png' },
-            { number: 8,  name: 'DARÍO',              position: 'Extremo izquierdo',country: 'España',   age: 22, img: 'img/plantilla/08-dario.png' },
-            { number: 9,  name: 'PEDRITO',            position: 'Delantero',        country: 'España',   age: 19, img: 'img/plantilla/09-pedrito.png' },
-            { number: 10, name: 'JUANCHO GALÁN',      position: 'Centrocampista',   country: 'España',   age: 20, img: 'img/plantilla/10-juancho.png' },
-            { number: 11, name: 'JOAN SAVALL',        position: 'Extremo derecho',  country: 'España',   age: 20, img: 'img/plantilla/11-joan-savall.png' },
-            { number: 12, name: 'ALEJO',              position: 'Lateral izquierdo',country: '?',        age: 20, img: 'img/plantilla/12-alejo.png' },
-            { number: 13, name: 'QUIQUE DE SANFÉLIX', position: 'Portero',          country: 'España',   age: 19, img: 'img/plantilla/13-q-de-sanfelix.png' },
-            { number: 14, name: 'SHIVAM DHINGRA',     position: 'Lateral izquierdo',country: 'India',    age: 25, img: 'img/plantilla/14-shivam.png' },
-            { number: 16, name: 'TOMMASO DURSO',      position: 'Defensa',          country: 'Italia',   age: 20, img: 'img/plantilla/16-tommaso-durso.png' },
-            { number: 17, name: 'MALONDA',            position: 'Extremo izquierdo',country: 'España',   age: 20, img: 'img/plantilla/17-malonda.png' },
-            { number: 19, name: 'DARÍO HARDY',        position: 'Lateral derecho',  country: 'Cuba',     age: 18, img: 'img/plantilla/19-hardy.png' },
-            { number: 20, name: 'PAU POMER',          position: 'Extremo derecho',  country: 'España',   age: 16, img: 'img/plantilla/20-pau-pomer.png' },
-            { number: 22, name: 'ALEJANDRO PELLI',    position: 'Delantero',        country: 'España',   age: 20, img: 'img/plantilla/22-pelli.png' },
-            { number: 23, name: 'PAU VILA',           position: 'Mediocentro',      country: 'España',   age: 19, img: 'img/plantilla/23-vila.png' },
-            { number: 24, name: 'MARC PONS',          position: 'Lateral derecho',  country: 'España',   age: 19, img: 'img/plantilla/24-marc-pons.png' }
-        ].sort((a, b) => a.number - b.number);
+            {
+                position: 'Porteros',
+                players: [
+                    { number: 1, name: 'JOSEP DOMÍNGUEZ', displayName: 'JOSEP <strong>DOMÍNGUEZ</strong>', label: 'Portero', age: 18, country: 'España', img: 'img/plantilla/01-josep-dominguez.png' },
+                    { number: 13, name: 'QUIQUE DE SANFÉLIX', displayName: 'QUIQUE <strong>DE SANFÉLIX</strong>', label: 'Portero', age: 19, country: 'España', img: 'img/plantilla/13-quique-de-sanfelix.png' }
+                ]
+            },
+            {
+                position: 'Defensas',
+                players: [
+                    { number: 3, name: 'JORGE MARTÍ', displayName: 'JORGE <strong>MARTÍ</strong>', label: 'Central', age: 22, country: 'España', img: 'img/plantilla/03-jorge-marti.png' },
+                    { number: 4, name: 'MARCOS BLASCO', displayName: 'MARCOS <strong>BLASCO</strong>', label: 'Central', age: 19, country: 'España', img: 'img/plantilla/04-marcos-blasco.png' },
+                    { number: 5, name: 'VÍCTOR ANGELOV', displayName: 'VÍCTOR <strong>ANGELOV</strong>', label: 'Central', age: 16, country: 'Bulgaria', img: 'img/plantilla/05-victor-angelov.png' },
+                    { number: 12, name: 'ALEJO', displayName: '<strong>ALEJO</strong>', label: 'Lateral izquierdo', age: 20, country: 'España', img: 'img/plantilla/12-alejo.png' },
+                    { number: 14, name: 'SHIVAM', displayName: '<strong>SHIVAM</strong>', label: 'Lateral izquierdo', age: 25, country: 'India', img: 'img/plantilla/14-shivam.png' },
+                    { number: 19, name: 'HARDY', displayName: '<strong>HARDY</strong>', label: 'Lateral derecho', age: 18, country: 'Cuba', img: 'img/plantilla/19-hardy.png' },
+                    { number: 24, name: 'MARC PONS', displayName: '<strong>MARC PONS</strong>', label: 'Lateral derecho', age: 19, country: 'España', img: 'img/plantilla/24-marc-pons.png' }
+                ]
+            },
+            {
+                position: 'Centrocampistas',
+                players: [
+                    { number: 6, name: 'DAVID CASTELLANO', displayName: 'DAVID <strong>CASTELLANO</strong>', label: 'Pivote', age: 24, country: 'España', img: 'img/plantilla/06-david-castellano.png' },
+                    { number: 10, name: 'JUANCHO GALÁN', displayName: '<strong>JUANCHO</strong> GALÁN', label: 'Mediocentro', age: 20, country: 'España', img: 'img/plantilla/10-juancho-galan.png' },
+                    { number: 16, name: 'TOMMY', displayName: '<strong>TOMMY</strong>', label: 'Pivote', age: 20, country: 'Italia', img: 'img/plantilla/16-tommy.png' },
+                    { number: 20, name: 'ALEJANDRO MAFÉ', displayName: 'ALEJANDRO <strong>MAFÉ</strong>', label: 'Mediocentro', age: 22, country: 'España', img: 'img/plantilla/20-alejandro-mafe.png' },
+                    { number: 23, name: 'PAU VILA', displayName: 'PAU <strong>VILA</strong>', label: 'Mediocentro', age: 19, country: 'España', img: 'img/plantilla/23-pau-vila.png' }
+                ]
+            },
+            {
+                position: 'Delanteros',
+                players: [
+                    { number: 8, name: 'DARÍO', displayName: '<strong>DARÍO</strong>', label: 'Extremo izquierdo', age: 22, country: 'España', img: 'img/plantilla/08-dario.png' },
+                    { number: 9, name: 'PEDRITO', displayName: '<strong>PEDRITO</strong>', label: 'Punta', age: 23, country: 'España', img: 'img/plantilla/09-pedrito.png' },
+                    { number: 11, name: 'JOAN SAVALL', displayName: 'JOAN <strong>SAVALL</strong>', label: 'Extremo derecho', age: 20, country: 'España', img: 'img/plantilla/11-joan-savall.png' },
+                    { number: 17, name: 'MALONDA', displayName: '<strong>MALONDA</strong>', label: 'Extremo izquierdo', age: 20, country: 'España', img: 'img/plantilla/17-malonda.png' },
+                    { number: 18, name: 'ALEJANDRO ZAPATA', displayName: 'ALEJANDRO <strong>ZAPATA</strong>', label: 'Punta', age: 20, country: 'España', img: 'img/plantilla/18-alejandro-zapata.png' },
+                    { number: 21, name: 'PAU POMER', displayName: 'PAU <strong>POMER</strong>', label: 'Extremo derecho', age: 16, country: 'España', img: 'img/plantilla/21-pau-pomer.png' },
+                    { number: 22, name: 'ALEJANDRO PELLI', displayName: 'ALEJANDRO <strong>PELLI</strong>', label: 'Punta', age: 20, country: 'España', img: 'img/plantilla/22-alejandro-pelli.png' }
+                ]
+            }
+        ];
 
         const legends = [
             {
@@ -1170,26 +1160,26 @@
 
         function renderSquad() {
             const container = document.getElementById('squadContainer');
-            container.innerHTML = `
-                <div class="players-grid">
-                    ${squad.map(player => `
-                        <article class="player-card">
-                            <div class="player-img">
-                                <span class="player-number">${player.number}</span>
-                                <img src="${player.img}" alt="${player.name}" loading="lazy" onerror="this.replaceWith(createPlayerFallback('${sanitizeInitials(player.name)}'))">
-                            </div>
-                            <div class="card-info">
-                                <h3 class="player-name">${player.name}</h3>
-                                <div class="player-meta">
-                                    <p class="player-meta-row"><i class="fa-solid fa-futbol"></i><span>${player.position}</span></p>
-                                    <p class="player-meta-row"><i class="fa-solid fa-earth-europe"></i><span>${player.country}</span></p>
-                                    <p class="player-meta-row"><i class="fa-solid fa-cake-candles"></i><span>${player.age} años</span></p>
+            container.innerHTML = squad.map(group => `
+                <div class="position-group">
+                    <h3 class="position-title">${group.position} <small>${group.players.length}</small></h3>
+                    <div class="grid players-grid">
+                        ${group.players.map(player => `
+                            <article class="player-card">
+                                <div class="player-img">
+                                    <img src="${player.img}" alt="${player.name}" loading="lazy" onerror="this.replaceWith(createPlayerFallback('${sanitizeInitials(player.name)}'))">
                                 </div>
-                            </div>
-                        </article>
-                    `).join('')}
+                                <div class="card-info">
+                                    <span class="player-number">${player.number}</span>
+                                    <h4 class="player-name">${player.displayName}</h4>
+                                    <p class="player-pos-label">${player.label}</p>
+                                    <p class="player-meta">${player.age} años · ${player.country}</p>
+                                </div>
+                            </article>
+                        `).join('')}
+                    </div>
                 </div>
-            `;
+            `).join('');
         }
 
         function createPlayerFallback(initials) {
