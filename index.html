@@ -122,8 +122,11 @@
         }
         .brand img {
             height: 54px;
-            width: auto;
-            filter: drop-shadow(0 8px 10px rgba(0,0,0,0.28));
+            width: 54px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(243, 229, 171, 0.48);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.24);
         }
         .brand span { font-size: clamp(1rem, 2vw, 1.45rem); }
         .nav-links {
@@ -197,15 +200,51 @@
             opacity: 0.7;
         }
         .hero-content { position: relative; z-index: 2; width: min(980px, 100%); }
-        .hero-logo {
-            width: clamp(190px, 26vw, 310px);
-            margin: 0 auto 24px;
-            filter: drop-shadow(0 24px 28px rgba(0,0,0,0.36));
+        .hero-logo-frame {
+            width: clamp(180px, 23vw, 250px);
+            aspect-ratio: 1;
+            margin: 0 auto 30px;
+            position: relative;
+            display: grid;
+            place-items: center;
             animation: float 6s ease-in-out infinite;
+            isolation: isolate;
+        }
+        .hero-logo-frame::before {
+            content: '';
+            position: absolute;
+            inset: -22px;
+            border-radius: 42px;
+            background:
+                radial-gradient(circle at 28% 24%, rgba(255, 82, 207, 0.46), transparent 34%),
+                radial-gradient(circle at 78% 28%, rgba(0, 229, 255, 0.42), transparent 34%),
+                radial-gradient(circle at 50% 82%, rgba(255, 220, 66, 0.34), transparent 38%);
+            filter: blur(18px);
+            opacity: 0.9;
+            z-index: -1;
+        }
+        .hero-logo-frame::after {
+            content: '';
+            position: absolute;
+            inset: -7px;
+            border-radius: 34px;
+            border: 1px solid rgba(255,255,255,0.27);
+            box-shadow: 0 24px 60px rgba(0, 18, 48, 0.42);
+            pointer-events: none;
+        }
+        .hero-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
+            border: 2px solid rgba(243, 229, 171, 0.72);
+            box-shadow:
+                0 22px 48px rgba(0,0,0,0.34),
+                inset 0 0 0 1px rgba(255,255,255,0.18);
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-14px); }
+            50% { transform: translateY(-12px); }
         }
         .hero h1 {
             font-size: clamp(3.4rem, 10vw, 8.8rem);
@@ -738,7 +777,7 @@
             font-weight: 950;
             text-transform: uppercase;
         }
-        .footer-logo img { width: 82px; filter: drop-shadow(0 10px 16px rgba(0,0,0,0.32)); }
+        .footer-logo img { width: 82px; height: 82px; object-fit: cover; border-radius: 20px; border: 1px solid rgba(243,229,171,0.42); box-shadow: 0 10px 22px rgba(0,0,0,0.28); }
         .copyright { margin-top: 18px; color: rgba(255,255,255,0.62); font-size: 0.85rem; }
 
         @media (max-width: 920px) {
@@ -777,7 +816,7 @@
 
     <nav class="navbar">
         <a href="#inicio" class="brand" aria-label="Atunes CF Inicio">
-            <img src="img/escudo/escudo-atunes-cf.png" alt="Escudo Atunes CF" onerror="this.style.display='none'">
+            <img src="img/escudo-atunes-cf.png.png" alt="Escudo Atunes CF" onerror="if(!this.dataset.singleTried && this.src.endsWith('.png.png')){this.dataset.singleTried='1';this.src=this.src.replace(/\.png\.png$/,'.png');}else{this.style.display='none';}">
             <span>Atunes CF</span>
         </a>
         <button class="menu-toggle" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false" onclick="toggleMenu()">
@@ -795,7 +834,7 @@
 
     <header class="hero" id="inicio">
         <div class="hero-content">
-            <img src="img/escudo/escudo-atunes-cf.png" alt="Escudo grande de Atunes CF" class="hero-logo" onerror="this.style.display='none'">
+            <div class="hero-logo-frame"><img src="img/escudo-atunes-cf.png.png" alt="Escudo grande de Atunes CF" class="hero-logo" onerror="if(!this.dataset.singleTried && this.src.endsWith('.png.png')){this.dataset.singleTried='1';this.src=this.src.replace(/\.png\.png$/,'.png');}else{this.closest('.hero-logo-frame').style.display='none';}"></div>
             <h1>Atunes CF</h1>
             <h2>Més que un equip</h2>
             <div class="hero-actions">
@@ -938,34 +977,34 @@
             </div>
         </div>
         <div class="footer-logo">
-            <img src="img/escudo/escudo-atunes-cf.png" alt="Escudo Atunes CF" onerror="this.style.display='none'">
+            <img src="img/escudo-atunes-cf.png.png" alt="Escudo Atunes CF" onerror="if(!this.dataset.singleTried && this.src.endsWith('.png.png')){this.dataset.singleTried='1';this.src=this.src.replace(/\.png\.png$/,'.png');}else{this.style.display='none';}">
             Atunes CF
         </div>
         <p class="copyright">© 2026 Atunes CF. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // IMÁGENES: sube tus nuevos archivos respetando estas rutas.
+        // IMÁGENES: sube todos los archivos de la captura directamente dentro de /img, conservando exactamente sus nombres.
         const kits = [
             {
                 category: 'Entrenamiento',
                 name: 'La Básica',
                 tag: 'Entrenamiento',
-                img: 'img/equipaciones/entrenamiento/la-basica.png',
+                img: 'img/entrenamiento_la-basica.png.png',
                 desc: 'Equipación de entrenamiento de Atunes CF.'
             },
             {
                 category: 'Jugador',
                 name: 'La Original',
                 tag: 'Jugador',
-                img: 'img/equipaciones/jugador/la-original.png',
+                img: 'img/jugador_la-original.png.png',
                 desc: 'La primera camiseta de la historia de Atunes. Con ella se ganó El Gandiazo, en 2023. Con ella, empezó todo.'
             },
             {
                 category: 'Jugador',
                 name: 'La Perla Negra',
                 tag: 'Jugador',
-                img: 'img/equipaciones/jugador/la-perla-negra.png',
+                img: 'img/jugador_la-perla-negra.png.png',
                 url: 'https://zentralsports.com/producto/atunes-cf/',
                 desc: 'Enviada desde el océano más profundo del planeta, la leyenda dice que fue creada por Tritón para ganar El Gandiazo 2 y El Gandiazo 3.'
             },
@@ -973,7 +1012,7 @@
                 category: 'Jugador',
                 name: 'La Canarinha',
                 tag: 'Jugador',
-                img: 'img/equipaciones/jugador/la-canarinha.png',
+                img: 'img/jugador_la-canarinha.png.png',
                 url: 'https://wadefc.com/products/camiseta-atunes-cf?srsltid=AfmBOop0GFoJlE5TWyUjIp8tKvmISCiALFlT9MMxIiaFWYKCiRy2zXVa',
                 desc: 'Azul, amarillo y blanco, obvio claro que combinan. Todo el poder de El Baifo en una camiseta.'
             },
@@ -981,7 +1020,7 @@
                 category: 'Jugador',
                 name: 'La Inferno',
                 tag: 'Jugador',
-                img: 'img/equipaciones/jugador/la-inferno.png',
+                img: 'img/jugador_la-inferno.png.png',
                 url: 'https://wadefc.com/products/camiseta-atunes-cf-away?pr_prod_strat=e5_desc&pr_rec_id=4d1a6f1a7&pr_rec_pid=15548137144660&pr_ref_pid=15548131803476&pr_seq=uniform',
                 desc: 'Emergida del fuego de la hoguera de San Juan para usarla en el césped del terreno de juego.'
             },
@@ -989,21 +1028,21 @@
                 category: 'Portero',
                 name: 'La Naranja Mecánica',
                 tag: 'Portero',
-                img: 'img/equipaciones/portero/la-naranja-mecanica.png',
+                img: 'img/portero_la-naranja-mecanica.png.png',
                 desc: 'La primera camiseta de portero de Atunes. Inspirada en los colores de la equipación de Holanda en 1974.'
             },
             {
                 category: 'Portero',
                 name: 'La Mutante',
                 tag: 'Portero',
-                img: 'img/equipaciones/portero/la-mutante.png',
+                img: 'img/portero_la-mutante.png.png',
                 desc: 'La camiseta de portero con la que se consagró la victoria de El Gandiazo 2 y El Gandiazo 3. Las paradas que se hicieron con ella eran sobrehumanas.'
             },
             {
                 category: 'Portero',
                 name: 'La Araña Negra',
                 tag: 'Portero',
-                img: 'img/equipaciones/portero/la-arana-negra.png',
+                img: 'img/portero_la-arana-negra.png.png',
                 url: 'https://wadefc.com/products/camiseta-atunes-cf-gk?pr_prod_strat=e5_desc&pr_rec_id=27a7549fe&pr_rec_pid=15548133900628&pr_ref_pid=15548137144660&pr_seq=uniform',
                 desc: 'Emergida para trazar una telaraña que cubra toda la red de la portería, haciendo honor al sobrenombre del portero más legendario de la historia de Atunes: Josep Domínguez.'
             }
@@ -1013,42 +1052,42 @@
             {
                 position: 'Porteros',
                 players: [
-                    { number: 1, name: 'JOSEP DOMÍNGUEZ', displayName: 'JOSEP <strong>DOMÍNGUEZ</strong>', label: 'Portero', age: 18, country: 'España', img: 'img/plantilla/01-josep-dominguez.png' },
-                    { number: 13, name: 'QUIQUE DE SANFÉLIX', displayName: 'QUIQUE <strong>DE SANFÉLIX</strong>', label: 'Portero', age: 19, country: 'España', img: 'img/plantilla/13-quique-de-sanfelix.png' }
+                    { number: 1, name: 'JOSEP DOMÍNGUEZ', displayName: 'JOSEP <strong>DOMÍNGUEZ</strong>', label: 'Portero', age: 18, country: 'España', img: 'img/01-j-dominguez.png.png' },
+                    { number: 13, name: 'QUIQUE DE SANFÉLIX', displayName: 'QUIQUE <strong>DE SANFÉLIX</strong>', label: 'Portero', age: 19, country: 'España', img: 'img/13-q-de-sanfelix.png.png' }
                 ]
             },
             {
                 position: 'Defensas',
                 players: [
-                    { number: 3, name: 'JORGE MARTÍ', displayName: 'JORGE <strong>MARTÍ</strong>', label: 'Central', age: 22, country: 'España', img: 'img/plantilla/03-jorge-marti.png' },
-                    { number: 4, name: 'MARCOS BLASCO', displayName: 'MARCOS <strong>BLASCO</strong>', label: 'Central', age: 19, country: 'España', img: 'img/plantilla/04-marcos-blasco.png' },
-                    { number: 5, name: 'VÍCTOR ANGELOV', displayName: 'VÍCTOR <strong>ANGELOV</strong>', label: 'Central', age: 16, country: 'Bulgaria', img: 'img/plantilla/05-victor-angelov.png' },
-                    { number: 12, name: 'ALEJO', displayName: '<strong>ALEJO</strong>', label: 'Lateral izquierdo', age: 20, country: 'España', img: 'img/plantilla/12-alejo.png' },
-                    { number: 14, name: 'SHIVAM', displayName: '<strong>SHIVAM</strong>', label: 'Lateral izquierdo', age: 25, country: 'India', img: 'img/plantilla/14-shivam.png' },
-                    { number: 16, name: 'TOMMY', displayName: '<strong>TOMMY</strong>', label: 'Central', age: 20, country: 'Italia', img: 'img/plantilla/16-tommy.png' },
-                    { number: 19, name: 'HARDY', displayName: '<strong>HARDY</strong>', label: 'Lateral derecho', age: 18, country: 'Cuba', img: 'img/plantilla/19-hardy.png' },
-                    { number: 24, name: 'MARC PONS', displayName: '<strong>MARC PONS</strong>', label: 'Lateral derecho', age: 19, country: 'España', img: 'img/plantilla/24-marc-pons.png' }
+                    { number: 3, name: 'JORGE MARTÍ', displayName: 'JORGE <strong>MARTÍ</strong>', label: 'Central', age: 22, country: 'España', img: 'img/03-marti.png.png' },
+                    { number: 4, name: 'MARCOS BLASCO', displayName: 'MARCOS <strong>BLASCO</strong>', label: 'Central', age: 19, country: 'España', img: 'img/04-marcos-blasco.png.png' },
+                    { number: 5, name: 'VÍCTOR ANGELOV', displayName: 'VÍCTOR <strong>ANGELOV</strong>', label: 'Central', age: 16, country: 'Bulgaria', img: 'img/05-victor-angelov.png.png' },
+                    { number: 12, name: 'ALEJO', displayName: '<strong>ALEJO</strong>', label: 'Lateral izquierdo', age: 20, country: 'España', img: 'img/12-alejo.png.png' },
+                    { number: 14, name: 'SHIVAM', displayName: '<strong>SHIVAM</strong>', label: 'Lateral izquierdo', age: 25, country: 'India', img: 'img/14-shivam.png.png' },
+                    { number: 16, name: 'TOMMY', displayName: '<strong>TOMMY</strong>', label: 'Central', age: 20, country: 'Italia', img: 'img/16-tommaso-durso.png.png' },
+                    { number: 19, name: 'HARDY', displayName: '<strong>HARDY</strong>', label: 'Lateral derecho', age: 18, country: 'Cuba', img: 'img/19-hardy.png.png' },
+                    { number: 24, name: 'MARC PONS', displayName: '<strong>MARC PONS</strong>', label: 'Lateral derecho', age: 19, country: 'España', img: 'img/24-marc-pons.png.png' }
                 ]
             },
             {
                 position: 'Centrocampistas',
                 players: [
-                    { number: 7, name: 'CARLES DOMÍNGUEZ', displayName: 'CARLES <strong>DOMÍNGUEZ</strong>', label: 'Mediocentro', age: 21, country: 'España', img: 'img/plantilla/07-carles-dominguez.png' },
-                    { number: 10, name: 'JUANCHO GALÁN', displayName: '<strong>JUANCHO</strong> GALÁN', label: 'Mediocentro', age: 20, country: 'España', img: 'img/plantilla/10-juancho-galan.png' },
-                    { number: 20, name: 'ALEJANDRO MAFÉ', displayName: 'ALEJANDRO <strong>MAFÉ</strong>', label: 'Mediocentro', age: 22, country: 'España', img: 'img/plantilla/20-alejandro-mafe.png' },
-                    { number: 23, name: 'PAU VILA', displayName: 'PAU <strong>VILA</strong>', label: 'Mediocentro', age: 19, country: 'España', img: 'img/plantilla/23-pau-vila.png' }
+                    { number: 7, name: 'CARLES DOMÍNGUEZ', displayName: 'CARLES <strong>DOMÍNGUEZ</strong>', label: 'Pivote', age: 21, country: 'España', img: 'img/07-dominguez.png.png' },
+                    { number: 10, name: 'JUANCHO GALÁN', displayName: '<strong>JUANCHO</strong> GALÁN', label: 'Mediocentro', age: 20, country: 'España', img: 'img/10-juancho.png.png' },
+                    { number: 20, name: 'ALEJANDRO MAFÉ', displayName: 'ALEJANDRO <strong>MAFÉ</strong>', label: 'Mediocentro', age: 22, country: 'España', img: 'img/20-mafe.png.png' },
+                    { number: 23, name: 'PAU VILA', displayName: 'PAU <strong>VILA</strong>', label: 'Mediocentro', age: 19, country: 'España', img: 'img/23-vila.png.png' }
                 ]
             },
             {
                 position: 'Delanteros',
                 players: [
-                    { number: 8, name: 'DARÍO', displayName: '<strong>DARÍO</strong>', label: 'Extremo izquierdo', age: 22, country: 'España', img: 'img/plantilla/08-dario.png' },
-                    { number: 9, name: 'PEDRITO', displayName: '<strong>PEDRITO</strong>', label: 'Punta', age: 23, country: 'España', img: 'img/plantilla/09-pedrito.png' },
-                    { number: 11, name: 'JOAN SAVALL', displayName: 'JOAN <strong>SAVALL</strong>', label: 'Extremo derecho', age: 20, country: 'España', img: 'img/plantilla/11-joan-savall.png' },
-                    { number: 17, name: 'MALONDA', displayName: '<strong>MALONDA</strong>', label: 'Extremo izquierdo', age: 20, country: 'España', img: 'img/plantilla/17-malonda.png' },
-                    { number: 18, name: 'ALEJANDRO ZAPATA', displayName: 'ALEJANDRO <strong>ZAPATA</strong>', label: 'Punta', age: 20, country: 'España', img: 'img/plantilla/18-alejandro-zapata.png' },
-                    { number: 21, name: 'PAU POMER', displayName: 'PAU <strong>POMER</strong>', label: 'Extremo derecho', age: 16, country: 'España', img: 'img/plantilla/21-pau-pomer.png' },
-                    { number: 22, name: 'ALEJANDRO PELLI', displayName: 'ALEJANDRO <strong>PELLI</strong>', label: 'Punta', age: 20, country: 'España', img: 'img/plantilla/22-alejandro-pelli.png' }
+                    { number: 8, name: 'DARÍO', displayName: '<strong>DARÍO</strong>', label: 'Extremo izquierdo', age: 22, country: 'España', img: 'img/08-dario.png.png' },
+                    { number: 9, name: 'PEDRITO', displayName: '<strong>PEDRITO</strong>', label: 'Punta', age: 23, country: 'España', img: 'img/09-pedrito.png.png' },
+                    { number: 11, name: 'JOAN SAVALL', displayName: 'JOAN <strong>SAVALL</strong>', label: 'Extremo derecho', age: 20, country: 'España', img: 'img/11-joan-savall.png.png' },
+                    { number: 17, name: 'MALONDA', displayName: '<strong>MALONDA</strong>', label: 'Extremo izquierdo', age: 20, country: 'España', img: 'img/17-malonda.png.png' },
+                    { number: 18, name: 'ALEJANDRO ZAPATA', displayName: 'ALEJANDRO <strong>ZAPATA</strong>', label: 'Punta', age: 20, country: 'España', img: 'img/18-zapata.png.png' },
+                    { number: 21, name: 'PAU POMER', displayName: 'PAU <strong>POMER</strong>', label: 'Extremo derecho', age: 16, country: 'España', img: 'img/21-pau-pomer.png.png' },
+                    { number: 22, name: 'ALEJANDRO PELLI', displayName: 'ALEJANDRO <strong>PELLI</strong>', label: 'Punta', age: 20, country: 'España', img: 'img/22-pelli.png.png' }
                 ]
             }
         ];
@@ -1058,48 +1097,48 @@
                 number: 11,
                 name: 'RAÚL GONZÁLEZ',
                 years: '2022 - 2025',
-                img: 'img/leyendas/raul-gonzalez.png',
+                img: 'img/raul-gonzalez.png.png',
                 honours: 'Campeón de El Gandiazo y El Gandiazo 2'
             },
             {
                 number: 14,
                 name: 'GERARD LLOPIS',
                 years: '2022 - 2026',
-                img: 'img/leyendas/gerard-llopis.png',
+                img: 'img/gerard-llopis.png.png',
                 honours: 'Campeón de El Gandiazo y El Gandiazo 2'
             },
             {
                 number: 73,
                 name: 'CARLOS SÁNCHEZ',
                 years: '2024 - 2026',
-                img: 'img/leyendas/carlos-sanchez.png',
+                img: 'img/carlos-sanchez.png.png',
                 honours: 'Campeón de El Gandiazo 2 y El Gandiazo 3'
             },
             {
                 number: 5,
                 name: 'ERIC BARBER',
                 years: '2024 - 2026',
-                img: 'img/leyendas/eric-barber.png',
+                img: 'img/eric-barber.png.png',
                 honours: 'Máximo goleador de la historia del club'
             }
         ];
 
         const rivals = [
-            { name: 'Calle FC', img: 'img/rivales/calle-fc.png' },
-            { name: 'Avispones FE', img: 'img/rivales/avispones-fe.png' },
-            { name: 'Ágora FC', img: 'img/rivales/agora-fc.png' },
-            { name: 'Potríes Team', img: 'img/rivales/potries-team.png' },
-            { name: 'Marimbagringa FC', img: 'img/rivales/marimbagringa-fc.png' },
-            { name: 'Mayas FC', img: 'img/rivales/mayas-fc.png' },
-            { name: 'Tiki Takes FC', img: 'img/rivales/tiki-takes-fc.png' },
-            { name: 'Dolguts CF', img: 'img/rivales/dolguts-cf.png' },
-            { name: 'Erasmus FC', img: 'img/rivales/erasmus-fc.png' },
-            { name: 'Frankfurt GL', img: 'img/rivales/frankfurt-gl.png' },
-            { name: 'Petanca FC', img: 'img/rivales/petanca-fc.png' },
-            { name: 'Los Iluminados', img: 'img/rivales/los-iluminados.png' },
-            { name: 'RealTraster', img: 'img/rivales/realtraster.png' },
-            { name: 'Jägger Múnich', img: 'img/rivales/jagger-munich.png' },
-            { name: 'Grao City', img: 'img/rivales/grao-city.png' }
+            { name: 'Calle FC', img: 'img/calle-fc.png.png' },
+            { name: 'Avispones FE', img: 'img/avispones-fe.png.png' },
+            { name: 'Ágora FC', img: 'img/agora-fc.png.png' },
+            { name: 'Potríes Team', img: 'img/potries-team.png.png' },
+            { name: 'Marimbagringa FC', img: 'img/marimbagringa-fc.png.png' },
+            { name: 'Mayas FC', img: 'img/mayas-fc.png.png' },
+            { name: 'Tiki Takes FC', img: 'img/tiki-takes-fc.png.png' },
+            { name: 'Dolguts CF', img: 'img/dolguts-cf.png.png' },
+            { name: 'Erasmus FC', img: 'img/erasmus-fc.png.png' },
+            { name: 'Frankfurt GL', img: 'img/frankfurt-gl.png.png' },
+            { name: 'Petanca FC', img: 'img/petanca-fc.png.png' },
+            { name: 'Los Iluminados', img: 'img/los-iluminados.png.png' },
+            { name: 'RealTraster', img: 'img/realtraster.png.png' },
+            { name: 'Jägger Múnich', img: 'img/jagger-munich.png.png' },
+            { name: 'Grao City', img: 'img/grao-city.png.png' }
         ];
 
         // Los resultados ya no se muestran en la web. Se conserva únicamente
@@ -1111,6 +1150,15 @@
             'CARLOS SÁNCHEZ': 4,
             'PEDRITO': 3
         };
+
+        function trySingleExtension(img, finalFallback) {
+            if (!img.dataset.singleTried && img.src.endsWith('.png.png')) {
+                img.dataset.singleTried = '1';
+                img.src = img.src.replace(/\.png\.png$/, '.png');
+                return;
+            }
+            finalFallback();
+        }
 
         function sanitizeInitials(name) {
             return name
@@ -1136,7 +1184,7 @@
                                 <article class="card shop-card">
                                     <span class="kit-tag">${kit.tag}</span>
                                     <div class="kit-img">
-                                        <img src="${kit.img}" alt="Equipación ${kit.name}" loading="lazy" onerror="this.replaceWith(createKitFallback('${kit.name.replace(/'/g, "\\'")}'))">
+                                        <img src="${kit.img}" alt="Equipación ${kit.name}" loading="lazy" onerror="trySingleExtension(this, () => this.replaceWith(createKitFallback('${kit.name.replace(/'/g, "\\'")}')))">
                                     </div>
                                     <div class="kit-info">
                                         <h3 class="kit-title">${kit.name}</h3>
@@ -1167,7 +1215,7 @@
                         ${group.players.map(player => `
                             <article class="player-card">
                                 <div class="player-img">
-                                    <img src="${player.img}" alt="${player.name}" loading="lazy" onerror="this.replaceWith(createPlayerFallback('${sanitizeInitials(player.name)}'))">
+                                    <img src="${player.img}" alt="${player.name}" loading="lazy" onerror="trySingleExtension(this, () => this.replaceWith(createPlayerFallback('${sanitizeInitials(player.name)}')))">
                                 </div>
                                 <div class="card-info">
                                     <span class="player-number">${player.number}</span>
@@ -1215,7 +1263,7 @@
             grid.innerHTML = legends.map(legend => `
                 <article class="legend-card">
                     <div class="legend-photo">
-                        <img src="${legend.img}" alt="${legend.name}" loading="lazy" onerror="this.replaceWith(createLegendFallback('${sanitizeInitials(legend.name)}'))">
+                        <img src="${legend.img}" alt="${legend.name}" loading="lazy" onerror="trySingleExtension(this, () => this.replaceWith(createLegendFallback('${sanitizeInitials(legend.name)}')))">
                     </div>
                     <span class="legend-number">#${legend.number}</span>
                     <h3 class="legend-name">${legend.name}</h3>
@@ -1237,7 +1285,7 @@
             grid.innerHTML = rivals.map(rival => `
                 <article class="rival-card">
                     <div class="rival-crest">
-                        <img src="${rival.img}" alt="Escudo ${rival.name}" loading="lazy" onerror="this.replaceWith(createRivalFallback('${sanitizeInitials(rival.name)}'))">
+                        <img src="${rival.img}" alt="Escudo ${rival.name}" loading="lazy" onerror="trySingleExtension(this, () => this.replaceWith(createRivalFallback('${sanitizeInitials(rival.name)}')))">
                     </div>
                     <h3 class="rival-name">${rival.name}</h3>
                 </article>
