@@ -357,16 +357,18 @@
         }
         .shop-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-strong); }
         .kit-img {
-            height: 285px;
-            min-height: 285px;
-            flex: 0 0 285px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            height: auto;
+            min-height: 0;
+            flex: 0 0 auto;
             background:
                 radial-gradient(circle at center, rgba(0,119,230,0.10), transparent 50%),
                 linear-gradient(180deg, #fff, #eef4fb);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 18px;
+            padding: 0;
             overflow: hidden;
             border-bottom: 1px solid rgba(0,85,164,0.10);
         }
@@ -508,12 +510,11 @@
         }
         .player-name {
             color: var(--primary-dark);
-            font-weight: 600;
+            font-weight: 950;
             text-transform: uppercase;
             letter-spacing: -0.02em;
             margin-bottom: 6px;
         }
-        .player-name strong { font-weight: 950; }
         .player-pos-label {
             color: var(--primary-dark);
             font-size: 0.76rem;
@@ -826,7 +827,6 @@
             .shop-card, .player-card, .rival-card, .btn { transition: none; }
         }
         @media (max-width: 620px) {
-            .kit-img { height: 260px; min-height: 260px; flex-basis: 260px; }
             .legend-photo { width: min(180px, 100%); }
             .section-container { width: min(100% - 22px, 1220px); padding: 54px 0; }
             .hero { padding-top: 64px; clip-path: polygon(0 0, 100% 0, 100% 96%, 50% 100%, 0 96%); }
@@ -1229,7 +1229,7 @@
                                 </div>
                                 <div class="card-info">
                                     <span class="player-number">${player.number}</span>
-                                    <h4 class="player-name">${player.displayName}</h4>
+                                    <h4 class="player-name">${player.name}</h4>
                                     <p class="player-pos-label">${player.label}</p>
                                     <p class="player-meta">${player.age} años · ${player.country}</p>
                                 </div>
